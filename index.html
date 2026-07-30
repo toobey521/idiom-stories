@@ -940,10 +940,13 @@ function init() {
   const sideCats = document.getElementById('sidebarCats');
   const emojiMap2 = {'动物':'🐾','自然':'🏔️','人物':'👤','战争':'⚔️','哲理':'☯️','情感':'💝','行为':'👣','文化':'📜','综合':'✨'};
   sideCats.innerHTML = cats.map(c =>
-    `<button class="sidebar-cat" onclick="showSidebarCat('${c}')">${emojiMap2[c]||'📖'} ${c} <span class="count">${data.filter(d=>d.c===c).length}</span></button>`
+    `<button class="sidebar-cat" onclick="filterCat('${c}');showSidebarCat('${c}')">${emojiMap2[c]||'📖'} ${c} <span class="count">${data.filter(d=>d.c===c).length}</span></button>`
   ).join('');
 
   render();
+  // Open sidebar by default
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('sidebarToggle').classList.add('open');
 }
 
 function filterCat(cat) {
@@ -952,6 +955,12 @@ function filterCat(cat) {
   document.querySelectorAll('.cat-tab').forEach(t => t.classList.toggle('active', t.dataset.cat === cat));
   document.getElementById('catFilter').value = cat;
   render();
+  // Sync sidebar with selected category
+  if (cat === 'all') {
+    showSidebarCats();
+  } else {
+    showSidebarCat(cat);
+  }
 }
 
 function toggleFavBtn(el, word) {

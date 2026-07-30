@@ -137,6 +137,8 @@ body{
 .cat-tab.active small{opacity:.8;}
 
 /* ======= SIDEBAR ======= */
+.main-wrap{transition:margin-left .3s cubic-bezier(.4,0,.2,1);min-height:100vh;}
+.main-wrap.shift{margin-left:200px;}
 .sidebar-toggle{
   position:fixed;left:0;top:50%;transform:translateY(-50%);
   z-index:50;width:36px;height:80px;
@@ -316,7 +318,7 @@ body{
   box-shadow:0 8px 30px rgba(79,124,130,.08);
 }
 .card-illustration{
-  width:100%;height:260px;overflow:hidden;
+  width:100%;height:320px;overflow:hidden;
   background:linear-gradient(135deg,#f0f7f4,#e8f2ee);
   position:relative;flex-shrink:0;
 }
@@ -559,6 +561,7 @@ body{
 <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <!-- HEADER -->
+<div class="main-wrap" id="mainWrap">
 
 <!-- HEADER -->
 <header class="header">
@@ -890,9 +893,10 @@ function navItem(direction) {
 
 // Sidebar
 function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
+  const open = document.getElementById('sidebar').classList.toggle('open');
   document.getElementById('sidebarToggle').classList.toggle('open');
   document.getElementById('sidebarOverlay').classList.toggle('open');
+  document.getElementById('mainWrap').classList.toggle('shift', open);
 }
 
 function showSidebarCats() {
@@ -947,6 +951,7 @@ function init() {
   // Open sidebar by default
   document.getElementById('sidebar').classList.add('open');
   document.getElementById('sidebarToggle').classList.add('open');
+  document.getElementById('mainWrap').classList.add('shift');
 }
 
 function filterCat(cat) {
@@ -1029,5 +1034,6 @@ document.addEventListener('keydown', function(e) {
   }
 });
 </script>
+</div>
 </body>
 </html>

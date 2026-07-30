@@ -27,11 +27,11 @@ h1::after{
   background:linear-gradient(90deg,transparent,#4f7c82,transparent);
 }
 .subtitle{color:#5a7a74;font-size:.92rem;margin:22px 0 44px;letter-spacing:3px;}
-.card-grid{
+.qr-grid{
   display:grid;grid-template-columns:1fr 1fr;
   gap:24px;max-width:640px;width:100%;
 }
-.card{
+.qr-card{
   background:#fff;border-radius:20px;
   padding:32px 24px 26px;
   text-align:center;
@@ -39,14 +39,14 @@ h1::after{
   border:1px solid rgba(79,124,130,.06);
   transition:all .3s;
 }
-.card:hover{transform:translateY(-3px);box-shadow:0 8px 36px rgba(79,124,130,.1);}
-.card-icon{font-size:1.6rem;margin-bottom:6px;}
-.card h2{
+.qr-card:hover{transform:translateY(-3px);box-shadow:0 8px 36px rgba(79,124,130,.1);}
+.qr-card .icon{font-size:1.6rem;margin-bottom:6px;}
+.qr-card h2{
   font-family:"ZCOOL XiaoWei","Ma Shan Zheng",serif;
   font-size:1rem;color:#2c5a52;font-weight:400;
   letter-spacing:2px;margin-bottom:2px;
 }
-.card .url{
+.qr-card .url{
   font-size:.68rem;color:#7a9e96;
   word-break:break-all;margin-bottom:14px;
   letter-spacing:.3px;line-height:1.4;
@@ -60,12 +60,13 @@ h1::after{
 .badge{
   display:inline-block;padding:2px 12px;border-radius:8px;
   font-size:.72rem;letter-spacing:.5px;
+  background:#e0f0e8;color:#2a6b52;
 }
-.badge-on{background:#e0f0e8;color:#2a6b52;}
-.card .hint{font-size:.72rem;color:#a8c0b8;margin-top:6px;}
+.qr-card .hint{font-size:.72rem;color:#a8c0b8;margin-top:6px;}
+.footer-note{margin-top:40px;font-size:.78rem;color:#7a9e96;letter-spacing:1px;}
 
 @media(max-width:640px){
-  .card-grid{grid-template-columns:1fr;gap:16px;max-width:320px;}
+  .qr-grid{grid-template-columns:1fr;gap:16px;max-width:320px;}
   h1{font-size:1.5rem;letter-spacing:6px;}
   body{padding:28px 16px 40px;}
   .subtitle{margin:14px 0 24px;}
@@ -79,45 +80,47 @@ h1::after{
 <h1>成语故事大全</h1>
 <p class="subtitle">扫一扫 · 即刻浏览 1000 条经典成语</p>
 
-<div class="card-grid">
+<div class="qr-grid">
 
-  <div class="card">
-    <div class="card-icon">🐙</div>
+  <div class="qr-card">
+    <div class="icon">🐙</div>
     <h2>主站 · GitHub Pages</h2>
     <div class="url">toobey521.github.io/idiom-stories</div>
-    <div class="qr-wrap"><img src="qr/github-pages.png"></div>
-    <span class="badge badge-on">✓ 全球访问</span>
+    <div class="qr-wrap"><img src="https://toobey521.github.io/idiom-stories/qr/github-pages.png" alt="QR"></div>
+    <span class="badge">✓ 全球访问</span>
     <div class="hint">自动 HTTPS</div>
   </div>
 
-  <div class="card">
-    <div class="card-icon">☁️</div>
+  <div class="qr-card">
+    <div class="icon">☁️</div>
     <h2>国内加速 · Cloudflare</h2>
     <div class="url">idiom-stories.pages.dev</div>
-    <div class="qr-wrap"><img src="qr/cloudflare.png"></div>
-    <span class="badge badge-on">✓ 国内流畅</span>
+    <div class="qr-wrap"><img src="https://toobey521.github.io/idiom-stories/qr/cloudflare.png" alt="QR"></div>
+    <span class="badge">✓ 国内流畅</span>
     <div class="hint">Cloudflare CDN 加速</div>
   </div>
 
-  <div class="card">
-    <div class="card-icon">⚡</div>
+  <div class="qr-card">
+    <div class="icon">⚡</div>
     <h2>极速 · esm.sh</h2>
     <div class="url">esm.sh/gh/toobey521/idiom-stories</div>
-    <div class="qr-wrap"><img src="qr/esm-sh.png"></div>
-    <span class="badge badge-on">✓ 零配置</span>
+    <div class="qr-wrap"><img src="https://toobey521.github.io/idiom-stories/qr/esm-sh.png" alt="QR"></div>
+    <span class="badge">✓ 零配置</span>
     <div class="hint">改代码即时生效</div>
   </div>
 
-  <div class="card">
-    <div class="card-icon">🔗</div>
+  <div class="qr-card">
+    <div class="icon">🔗</div>
     <h2>GitHub 仓库</h2>
     <div class="url">github.com/toobey521/idiom-stories</div>
-    <div class="qr-wrap"><img src="qr/github-pages.png"></div>
-    <span class="badge badge-on">✓ 开源</span>
+    <div class="qr-wrap"><img src="https://toobey521.github.io/idiom-stories/qr/github-pages.png" alt="QR"></div>
+    <span class="badge">✓ 开源</span>
     <div class="hint">Star & Fork</div>
   </div>
 
 </div>
+
+<p class="footer-note">三个入口内容完全一致，选择你最顺畅的访问</p>
 
 </body>
 </html>

@@ -134,6 +134,130 @@ body{
   box-shadow:0 2px 8px rgba(79,124,130,.15);
 }
 
+/* ======= SIDEBAR ======= */
+.sidebar-toggle{
+  position:fixed;left:0;top:50%;transform:translateY(-50%);
+  z-index:50;width:36px;height:80px;
+  background:linear-gradient(180deg,#4f7c82,#3d666b);
+  border:none;border-radius:0 10px 10px 0;
+  color:#fff;font-size:1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s;box-shadow:2px 2px 12px rgba(79,124,130,.15);
+  writing-mode:vertical-lr;letter-spacing:2px;font-size:.82rem;
+  font-family:inherit;
+}
+.sidebar-toggle:hover{width:40px;background:#3d666b;}
+.sidebar-toggle.open{left:200px;}
+.sidebar{
+  position:fixed;left:-200px;top:0;bottom:0;width:200px;
+  z-index:49;background:#fff;
+  box-shadow:2px 0 20px rgba(44,62,61,.08);
+  transition:left .3s cubic-bezier(.4,0,.2,1);
+  overflow-y:auto;display:flex;flex-direction:column;
+  border-right:1px solid #e0ece8;
+}
+.sidebar.open{left:0;}
+.sidebar-header{
+  padding:18px 16px 12px;
+  font-family:"ZCOOL XiaoWei","Ma Shan Zheng",serif;
+  font-size:1.1rem;color:#2c5a52;
+  letter-spacing:4px;text-align:center;
+  border-bottom:1px solid #e0ece8;
+  flex-shrink:0;
+}
+.sidebar-cats{padding:8px 0;flex:1;}
+.sidebar-cat{
+  display:block;width:100%;padding:10px 18px;
+  border:none;background:transparent;
+  font-family:inherit;font-size:.88rem;color:#4a665f;
+  text-align:left;cursor:pointer;transition:all .15s;
+  letter-spacing:.5px;
+  position:relative;
+}
+.sidebar-cat:hover{background:#f4f9f7;color:#2c5a52;}
+.sidebar-cat.active{
+  color:#4f7c82;font-weight:600;
+  background:#f0f7f4;
+}
+.sidebar-cat.active::before{
+  content:'';position:absolute;left:0;top:4px;bottom:4px;width:3px;
+  background:#4f7c82;border-radius:0 2px 2px 0;
+}
+.sidebar-cat .count{
+  float:right;color:#a8c0b8;font-size:.78rem;
+  font-weight:400;
+}
+.sidebar-overlay{
+  display:none;position:fixed;inset:0;z-index:48;
+  background:rgba(44,62,61,.15);
+}
+.sidebar-overlay.open{display:block;}
+
+/* ======= BACK TO TOP ======= */
+.back-top{
+  position:fixed;bottom:32px;right:32px;z-index:40;
+  width:42px;height:42px;border-radius:50%;
+  border:1.5px solid #d0e4dc;
+  background:#fff;color:#4f7c82;
+  font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 12px rgba(79,124,130,.1);
+  transition:all .25s;opacity:0;pointer-events:none;
+  transform:translateY(10px);
+}
+.back-top.show{opacity:1;pointer-events:auto;transform:translateY(0);}
+.back-top:hover{
+  background:#4f7c82;color:#fff;
+  box-shadow:0 4px 16px rgba(79,124,130,.2);
+  transform:translateY(-2px);
+}
+
+/* ======= CATEGORY DETAIL VIEW ======= */
+.cat-detail{
+  display:none;max-width:1200px;margin:0 auto 40px;
+  padding:0 24px;
+}
+.cat-detail.active{display:block;}
+.cat-detail-title{
+  font-family:"ZCOOL XiaoWei","Ma Shan Zheng",serif;
+  font-size:1.8rem;color:#2c5a52;letter-spacing:6px;
+  margin-bottom:4px;
+}
+.cat-detail-count{color:#7a9e96;font-size:.88rem;margin-bottom:16px;}
+.cat-detail-list{
+  display:grid;grid-template-columns:1fr;
+  gap:6px;
+}
+.cat-detail-item{
+  display:flex;align-items:baseline;gap:12px;
+  padding:10px 16px;background:#fff;
+  border-radius:8px;border:1px solid #e8f0ec;
+  cursor:pointer;transition:all .15s;
+}
+.cat-detail-item:hover{background:#f4f9f7;border-color:#c8ddd6;transform:translateX(3px);}
+.cat-detail-word{
+  font-family:"ZCOOL XiaoWei","Ma Shan Zheng",serif;
+  font-size:1.05rem;color:#2c5a52;
+  min-width:100px;letter-spacing:2px;
+}
+.cat-detail-pinyin{
+  font-size:.82rem;color:#7a9e96;
+  min-width:120px;
+}
+.cat-detail-meaning{
+  font-size:.85rem;color:#4a665f;line-height:1.5;
+  flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.cat-detail-back{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 20px;margin-top:18px;
+  background:#f0f7f4;border:1px solid #d0e4dc;
+  border-radius:8px;cursor:pointer;
+  font-family:inherit;font-size:.85rem;color:#4f7c82;
+  transition:all .2s;
+}
+.cat-detail-back:hover{background:#4f7c82;color:#fff;border-color:#4f7c82;}
+
 /* ======= STATS ======= */
 .stats{
   max-width:1200px;margin:16px auto 0;padding:0 24px;
@@ -371,6 +495,18 @@ body{
 </style>
 </head>
 <body>
+<!-- SIDEBAR -->
+<button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">📖 目录</button>
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">分类目录</div>
+  <div class="sidebar-cats" id="sidebarCats"></div>
+</div>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- HEADER -->
 
 <!-- HEADER -->
 <header class="header">
@@ -396,8 +532,16 @@ body{
 <!-- CATEGORY TABS -->
 <div class="cat-bar" id="catTabs"></div>
 
+<!-- CATEGORY DETAIL VIEW -->
+<div class="cat-detail" id="catDetail">
+  <div class="cat-detail-title" id="catDetailTitle"></div>
+  <div class="cat-detail-count" id="catDetailCount"></div>
+  <div class="cat-detail-list" id="catDetailList"></div>
+  <button class="cat-detail-back" onclick="closeCatDetail()">← 返回全部</button>
+</div>
+
 <!-- STATS -->
-<div class="stats">
+<div class="stats" id="stats">
   <span id="resultCount">共 1000 条成语</span>
   <span id="viewingInfo">第 1 页</span>
 </div>
@@ -681,6 +825,41 @@ function navItem(direction) {
   openModal(modalList[newIdx].w);
 }
 
+// Sidebar
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebarToggle').classList.toggle('open');
+  document.getElementById('sidebarOverlay').classList.toggle('open');
+}
+
+// Show category detail
+function showCatDetail(cat) {
+  const filtered = data.filter(d => d.c === cat);
+  document.getElementById('catDetailTitle').textContent = cat;
+  document.getElementById('catDetailCount').textContent = `共 ${filtered.length} 条成语`;
+  document.getElementById('catDetailList').innerHTML = filtered.map(d =>
+    `<div class="cat-detail-item" onclick="openModal('${d.w}');closeCatDetail()">
+      <span class="cat-detail-word">${d.w}</span>
+      <span class="cat-detail-pinyin">${d.p}</span>
+      <span class="cat-detail-meaning">${d.e}</span>
+    </div>`
+  ).join('');
+  document.getElementById('catDetail').classList.add('active');
+  document.getElementById('grid').style.display = 'none';
+  document.getElementById('pagination').style.display = 'none';
+  document.getElementById('stats').style.display = 'none';
+  document.getElementById('catTabs').style.display = 'none';
+  toggleSidebar();
+}
+
+function closeCatDetail() {
+  document.getElementById('catDetail').classList.remove('active');
+  document.getElementById('grid').style.display = '';
+  document.getElementById('pagination').style.display = '';
+  document.getElementById('stats').style.display = '';
+  document.getElementById('catTabs').style.display = '';
+}
+
 // Init
 function init() {
   data = IDIOM_DATA;
@@ -692,7 +871,7 @@ function init() {
     opt.value = c; opt.textContent = c;
     filterEl.appendChild(opt);
   });
-
+  // Category tabs
   const tabBar = document.getElementById('catTabs');
   const emojiMap = {'动物':'🐾','自然':'🏔️','人物':'👤','战争':'⚔️','哲理':'☯️','情感':'💝','行为':'👣','文化':'📜','综合':'✨'};
   let tabHtml = `<button class="cat-tab active" data-cat="all" onclick="filterCat('all')">🏮 全部</button>`;
@@ -700,6 +879,13 @@ function init() {
     tabHtml += `<button class="cat-tab" data-cat="${c}" onclick="filterCat('${c}')">${emojiMap[c]||'📖'} ${c}</button>`;
   });
   tabBar.innerHTML = tabHtml;
+
+  // Sidebar category list
+  const sideCats = document.getElementById('sidebarCats');
+  const emojiMap2 = {'动物':'🐾','自然':'🏔️','人物':'👤','战争':'⚔️','哲理':'☯️','情感':'💝','行为':'👣','文化':'📜','综合':'✨'};
+  sideCats.innerHTML = cats.map(c =>
+    `<button class="sidebar-cat" onclick="showCatDetail('${c}')">${emojiMap2[c]||'📖'} ${c} <span class="count">${data.filter(d=>d.c===c).length}</span></button>`
+  ).join('');
 
   render();
 }
@@ -720,6 +906,11 @@ function toggleFavBtn(el, word) {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+// Back to top scroll listener
+window.addEventListener('scroll', function() {
+  document.getElementById('backTop').classList.toggle('show', window.scrollY > 400);
+});
 
 document.getElementById('searchInput').addEventListener('input', function() {
   searchQuery = this.value;

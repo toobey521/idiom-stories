@@ -29,48 +29,49 @@ h1::after{
 .subtitle{color:#5a7a74;font-size:.92rem;margin:22px 0 44px;letter-spacing:3px;}
 .card-grid{
   display:grid;grid-template-columns:1fr 1fr;
-  gap:28px;max-width:700px;width:100%;
+  gap:24px;max-width:700px;width:100%;
 }
 .card{
   background:#fff;border-radius:20px;
-  padding:36px 28px 30px;
+  padding:32px 24px 26px;
   text-align:center;
   box-shadow:0 4px 28px rgba(79,124,130,.05);
   border:1px solid rgba(79,124,130,.06);
-  transition:all .3s;position:relative;
+  transition:all .3s;
 }
 .card:hover{transform:translateY(-3px);box-shadow:0 8px 36px rgba(79,124,130,.1);}
-.card-icon{font-size:1.8rem;margin-bottom:8px;}
+.card-icon{font-size:1.6rem;margin-bottom:6px;}
 .card h2{
   font-family:"ZCOOL XiaoWei","Ma Shan Zheng",serif;
-  font-size:1.1rem;color:#2c5a52;font-weight:400;
-  letter-spacing:3px;margin-bottom:2px;
+  font-size:1rem;color:#2c5a52;font-weight:400;
+  letter-spacing:2px;margin-bottom:2px;
 }
 .card .url{
-  font-size:.72rem;color:#7a9e96;
-  word-break:break-all;margin-bottom:18px;
-  letter-spacing:.5px;
+  font-size:.68rem;color:#7a9e96;
+  word-break:break-all;margin-bottom:14px;
+  letter-spacing:.3px;line-height:1.4;
 }
 .qr-wrap{
-  width:200px;height:200px;margin:0 auto 14px;
+  width:180px;height:180px;margin:0 auto 12px;
   border-radius:12px;overflow:hidden;
   display:flex;align-items:center;justify-content:center;
 }
-.qr-wrap img{width:200px;height:200px;display:block;}
+.qr-wrap img{width:170px;height:170px;display:block;}
 .badge{
-  display:inline-block;padding:3px 14px;border-radius:10px;
-  font-size:.75rem;letter-spacing:1px;
+  display:inline-block;padding:2px 12px;border-radius:8px;
+  font-size:.72rem;letter-spacing:.5px;
 }
 .badge-on{background:#e0f0e8;color:#2a6b52;}
 .badge-off{background:#f5f0f0;color:#9a8a8a;}
-.card .hint{font-size:.75rem;color:#a8c0b8;margin-top:8px;}
-.card-sub{grid-column:1/-1;max-width:320px;justify-self:center;width:100%;padding:28px;}
+.card .hint{font-size:.72rem;color:#a8c0b8;margin-top:6px;}
 
 @media(max-width:640px){
-  .card-grid{grid-template-columns:1fr;gap:20px;}
-  h1{font-size:1.6rem;letter-spacing:6px;}
+  .card-grid{grid-template-columns:1fr;gap:16px;max-width:320px;}
+  h1{font-size:1.5rem;letter-spacing:6px;}
   body{padding:28px 16px 40px;}
-  .subtitle{margin:16px 0 28px;}
+  .subtitle{margin:14px 0 24px;}
+  .qr-wrap{width:160px;height:160px;}
+  .qr-wrap img{width:150px;height:150px;}
 }
 </style>
 </head>
@@ -83,7 +84,7 @@ h1::after{
 
   <div class="card">
     <div class="card-icon">🐙</div>
-    <h2>主站 · GitHub Pages</h2>
+    <h2>GitHub Pages</h2>
     <div class="url">toobey521.github.io/idiom-stories</div>
     <div class="qr-wrap"><img src="qr/github-pages.png" alt="GitHub Pages QR"></div>
     <span class="badge badge-on">✓ 已上线</span>
@@ -91,21 +92,30 @@ h1::after{
   </div>
 
   <div class="card">
+    <div class="card-icon">☁️</div>
+    <h2>Cloudflare Pages</h2>
+    <div class="url">idiom-stories.pages.dev</div>
+    <div class="qr-wrap"><img src="qr/cloudflare.png" alt="Cloudflare Pages QR"></div>
+    <span class="badge badge-on">✓ 已上线</span>
+    <div class="hint">国内流畅 · Cloudflare CDN</div>
+  </div>
+
+  <div class="card">
     <div class="card-icon">📦</div>
-    <h2>国内加速 · jsDelivr CDN</h2>
+    <h2>jsDelivr CDN</h2>
     <div class="url">cdn.jsdelivr.net/gh/toobey521/idiom-stories</div>
     <div class="qr-wrap"><img src="qr/jsdelivr.png" alt="jsDelivr CDN QR"></div>
     <span class="badge badge-on">✓ 可用</span>
-    <div class="hint">国内速度快 · 免翻墙</div>
+    <div class="hint">国内加速 · 免翻墙</div>
   </div>
 
-  <div class="card card-sub">
-    <div class="card-icon">☁️</div>
-    <h2>Cloudflare Pages</h2>
-    <div class="url">待配置 — 需提供 Cloudflare 账号</div>
-    <div style="width:120px;height:120px;margin:10px auto;border-radius:50%;background:#f5f7f6;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#b8d0c8;">+</div>
-    <span class="badge badge-off">未配置</span>
-    <div class="hint">国内访问更优 · 连接 GitHub 即可自动部署</div>
+  <div class="card">
+    <div class="card-icon">⚡</div>
+    <h2>esm.sh CDN</h2>
+    <div class="url">esm.sh/gh/toobey521/idiom-stories@main</div>
+    <div class="qr-wrap"><img src="qr/esm-sh.png" alt="esm.sh QR"></div>
+    <span class="badge badge-on">✓ 可用</span>
+    <div class="hint">零配置 · 改代码即时生效</div>
   </div>
 
 </div>

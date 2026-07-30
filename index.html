@@ -4,325 +4,369 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>成语故事大全 - 1000条中国成语典故</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 /* ======= RESET & BASE ======= */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
   font-family:"Noto Serif SC","STKaiti","KaiTi","SimSun","Songti SC",serif;
-  background:linear-gradient(180deg,#f0f7f4 0%,#f5faf8 40%,#fafcfb 100%);
-  color:#2d3e3a;min-height:100vh;
+  background:#f6f9f8;
+  color:#2c3e3d;min-height:100vh;
 }
 
 /* ======= HEADER ======= */
 .header{
-  background:linear-gradient(135deg,#1a8a7a,#0d6b5e);
-  padding:0;
-  position:relative;overflow:hidden;
-  box-shadow:0 4px 20px rgba(13,107,94,.2);
+  background:linear-gradient(145deg,#e8f0ee 0%,#d5e8e2 50%,#eef6f4 100%);
+  padding:0 0 0;
+  position:relative;overflow:visible;
 }
-.header::before{
-  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
-  background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5L35 20L50 20L38 30L42 45L30 35L18 45L22 30L10 20L25 20Z' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E") repeat;
-  opacity:.15;
+.header::after{
+  content:'';position:absolute;bottom:-2px;left:0;right:0;
+  height:40px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40'%3E%3Cpath fill='%23f6f9f8' d='M0,20 C320,0 480,40 720,20 C960,0 1120,40 1440,20 L1440,40 L0,40Z'/%3E%3C/svg%3E") no-repeat bottom;
+  background-size:100% 40px;
 }
 .header-inner{
-  max-width:1200px;margin:0 auto;padding:40px 20px 30px;
+  max-width:1200px;margin:0 auto;padding:48px 24px 56px;
   position:relative;z-index:1;
   text-align:center;
 }
 .header h1{
-  font-family:"Ma Shan Zheng","STKaiti","KaiTi",serif;
-  font-size:3rem;color:#fff;
-  text-shadow:0 2px 8px rgba(0,0,0,.15);
-  letter-spacing:8px;
+  font-family:"ZCOOL XiaoWei","Ma Shan Zheng","STKaiti","KaiTi",serif;
+  font-size:3.2rem;font-weight:400;
+  color:#2c5a52;
+  letter-spacing:12px;
   position:relative;display:inline-block;
 }
 .header h1::after{
-  content:'';position:absolute;bottom:-8px;left:50%;
+  content:'';position:absolute;bottom:-10px;left:50%;
   transform:translateX(-50%);
-  width:80%;height:2px;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);
+  width:60px;height:2px;
+  background:linear-gradient(90deg,transparent,#4f7c82,transparent);
 }
 .header p{
-  color:rgba(255,255,255,.85);margin-top:14px;font-size:1.05rem;
-  letter-spacing:2px;
+  color:#5a7a74;margin-top:22px;font-size:1.05rem;
+  letter-spacing:3px;line-height:1.6;
+}
+.header p strong{
+  color:#2c5a52;font-weight:700;
 }
 .header-badge{
-  display:inline-block;background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.25);
-  border-radius:20px;padding:4px 16px;
-  color:#fff;font-size:.85rem;margin-top:12px;
+  display:inline-block;
+  background:linear-gradient(135deg,#d5e8e2,#c8ddd6);
+  border:none;
+  border-radius:20px;padding:5px 20px;
+  color:#2c5a52;font-size:.82rem;margin-top:16px;
+  letter-spacing:1px;
 }
 
-/* ======= SEARCH & FILTER ======= */
+/* ======= TOOLBAR ======= */
 .toolbar{
-  max-width:1200px;margin:-24px auto 0;padding:0 20px;
+  max-width:1200px;margin:-28px auto 0;padding:0 24px;
   position:relative;z-index:10;
 }
 .search-box{
-  background:#fff;border-radius:14px;
-  padding:16px 20px;
-  box-shadow:0 4px 24px rgba(26,138,122,.06);
-  display:flex;gap:12px;flex-wrap:wrap;
+  background:#fff;border-radius:16px;
+  padding:18px 24px;
+  box-shadow:0 4px 24px rgba(79,124,130,.06),0 1px 3px rgba(0,0,0,.02);
+  display:flex;gap:10px;flex-wrap:wrap;
   align-items:center;
+  border:1px solid rgba(79,124,130,.06);
 }
 .search-box input{
-  flex:1;min-width:200px;
-  padding:10px 16px;border:2px solid #d0e0da;
-  border-radius:8px;font-size:1rem;
-  font-family:inherit;color:#2d3e3a;
-  outline:none;transition:border-color .3s;
+  flex:1;min-width:180px;
+  padding:12px 18px;border:1.5px solid #e0ece8;
+  border-radius:10px;font-size:.95rem;
+  font-family:inherit;color:#2c3e3d;
+  outline:none;transition:all .25s;
   background:#fafcfb;
 }
-.search-box input:focus{border-color:#1a8a7a;}
-.search-box input::placeholder{color:#b0c5be;}
+.search-box input:focus{border-color:#4f7c82;box-shadow:0 0 0 3px rgba(79,124,130,.08);}
+.search-box input::placeholder{color:#a8c0b8;}
 
 .search-box select{
-  padding:10px 14px;border:2px solid #d0e0da;
-  border-radius:8px;font-size:.95rem;
-  font-family:inherit;color:#2d3e3a;
+  padding:12px 16px;border:1.5px solid #e0ece8;
+  border-radius:10px;font-size:.9rem;
+  font-family:inherit;color:#2c3e3d;
   background:#fafcfb;cursor:pointer;
-  outline:none;
+  outline:none;transition:all .25s;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 7L11 1' stroke='%234f7c82' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;padding-right:36px;
 }
-.search-box select:focus{border-color:#1a8a7a;}
+.search-box select:focus{border-color:#4f7c82;box-shadow:0 0 0 3px rgba(79,124,130,.08);}
 
 .btn{
-  padding:10px 24px;border:none;border-radius:8px;
-  font-size:.95rem;font-family:inherit;
-  cursor:pointer;transition:all .3s;
+  padding:12px 22px;border:none;border-radius:10px;
+  font-size:.9rem;font-family:inherit;font-weight:600;
+  cursor:pointer;transition:all .25s;
   display:inline-flex;align-items:center;gap:6px;
+  letter-spacing:.5px;
 }
-.btn-primary{background:#1a8a7a;color:#fff;}
-.btn-primary:hover{background:#0d6b5e;transform:translateY(-1px);}
+.btn-primary{
+  background:linear-gradient(135deg,#4f7c82,#3d666b);
+  color:#fff;box-shadow:0 2px 8px rgba(79,124,130,.2);
+}
+.btn-primary:hover{background:#3d666b;transform:translateY(-1px);box-shadow:0 4px 14px rgba(79,124,130,.25);}
 .btn-outline{
-  background:transparent;border:1px solid #1a8a7a;
-  color:#1a8a7a;
+  background:#fff;border:1.5px solid #c8ddd6;
+  color:#4f7c82;
 }
-.btn-outline:hover{background:#1a8a7a;color:#fff;}
-.btn-sm{padding:6px 14px;font-size:.85rem;}
+.btn-outline:hover{background:#e8f3ef;border-color:#4f7c82;}
+.btn-sm{padding:8px 16px;font-size:.82rem;}
 
 /* ======= CATEGORY TABS ======= */
 .cat-bar{
-  max-width:1200px;margin:16px auto 0;padding:0 20px;
+  max-width:1200px;margin:18px auto 0;padding:0 24px;
   display:flex;gap:6px;flex-wrap:wrap;
 }
 .cat-tab{
-  padding:6px 16px;border-radius:16px;
-  font-size:.82rem;color:#4a6b63;
-  background:rgba(26,138,122,.06);border:1px solid rgba(26,138,122,.15);
+  padding:7px 18px;border-radius:20px;
+  font-size:.8rem;color:#5a7a74;
+  background:#f0f6f4;border:1px solid transparent;
   cursor:pointer;transition:all .2s;
-  font-family:inherit;
+  font-family:inherit;letter-spacing:.3px;
 }
-.cat-tab:hover{background:rgba(26,138,122,.12);}
-.cat-tab.active{background:#1a8a7a;color:#fff;border-color:#1a8a7a;}
+.cat-tab:hover{background:#e0eee8;color:#3d666b;}
+.cat-tab.active{
+  background:#4f7c82;color:#fff;
+  box-shadow:0 2px 8px rgba(79,124,130,.15);
+}
 
 /* ======= STATS ======= */
 .stats{
-  max-width:1200px;margin:12px auto 0;padding:0 20px;
+  max-width:1200px;margin:16px auto 0;padding:0 24px;
   display:flex;justify-content:space-between;
-  font-size:.85rem;color:#7a9e94;
+  font-size:.82rem;color:#7a9e96;
+  letter-spacing:.3px;
 }
 
 /* ======= GRID ======= */
 .grid{
-  max-width:1200px;margin:16px auto 40px;
-  padding:0 20px;
+  max-width:1200px;margin:14px auto 40px;
+  padding:0 24px;
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:18px;
 }
 
 /* ======= CARD ======= */
 .card{
   background:#fff;border-radius:14px;overflow:hidden;
-  box-shadow:0 2px 16px rgba(0,0,0,.04);
+  box-shadow:0 1px 4px rgba(0,0,0,.02),0 4px 20px rgba(79,124,130,.04);
   cursor:pointer;transition:all .35s cubic-bezier(.4,0,.2,1);
   position:relative;
-  border:1px solid rgba(26,138,122,.06);
-  aspect-ratio:5/6;
   display:flex;flex-direction:column;
 }
 .card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 12px 36px rgba(26,138,122,.1);
-  border-color:rgba(26,138,122,.12);
+  transform:translateY(-3px);
+  box-shadow:0 8px 30px rgba(79,124,130,.08);
 }
 .card-illustration{
-  width:100%;height:65%;overflow:hidden;
-  background:#f8f4ee;position:relative;
-  flex-shrink:0;
+  width:100%;height:160px;overflow:hidden;
+  background:linear-gradient(135deg,#f0f7f4,#e8f2ee);
+  position:relative;flex-shrink:0;
 }
+.card-illustration img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.card:hover .card-illustration img{transform:scale(1.03);}
 .card-illustration svg{width:100%;height:100%;display:block;}
-.card-body{padding:16px 18px 18px;}
+.card-body{
+  padding:14px 18px 18px;
+  flex:1;display:flex;flex-direction:column;
+}
 .card-word{
-  font-family:"Ma Shan Zheng","STKaiti","KaiTi",serif;
-  font-size:1.5rem;color:#2d3e3a;
-  margin-bottom:4px;font-weight:400;
+  font-family:"ZCOOL XiaoWei","Ma Shan Zheng","STKaiti","KaiTi",serif;
+  font-size:1.35rem;color:#2c5a52;
+  margin-bottom:2px;font-weight:400;
+  letter-spacing:2px;
 }
 .card-pinyin{
-  font-size:.95rem;color:#7a9e94;margin-bottom:8px;
+  font-size:.85rem;color:#7a9e96;margin-bottom:8px;
+  letter-spacing:.5px;
 }
 .card-explanation{
-  font-size:1rem;color:#4a665d;line-height:1.6;
+  font-size:.92rem;color:#4a665f;line-height:1.6;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  flex:1;
 }
 .card-category{
-  position:absolute;top:12px;right:12px;
-  background:rgba(26,138,122,.85);color:#fff;
-  padding:3px 12px;border-radius:10px;
-  font-size:.85rem;
+  position:absolute;top:10px;right:10px;
+  background:rgba(79,124,130,.8);color:#fff;
+  padding:2px 12px;border-radius:8px;
+  font-size:.78rem;letter-spacing:.5px;
+  backdrop-filter:blur(4px);
 }
 .card-fav{
-  position:absolute;top:12px;left:12px;
-  background:rgba(255,255,255,.85);border:none;
-  width:32px;height:32px;border-radius:50%;
-  cursor:pointer;font-size:1rem;
+  position:absolute;top:10px;left:10px;
+  background:rgba(255,255,255,.75);border:none;
+  width:30px;height:30px;border-radius:50%;
+  cursor:pointer;font-size:.95rem;
   display:flex;align-items:center;justify-content:center;
-  transition:all .2s;color:#ccc;
+  transition:all .25s;color:#c0d8d0;
+  backdrop-filter:blur(4px);
 }
-.card-fav.active{color:#ff4444;}
-.card-fav:hover{transform:scale(1.15);}
+.card-fav.active{color:#e8515a;}
+.card-fav:hover{transform:scale(1.2);background:rgba(255,255,255,.95);}
 
 /* ======= PAGINATION ======= */
 .pagination{
-  max-width:1200px;margin:0 auto 40px;
-  padding:0 20px;
-  display:flex;justify-content:center;align-items:center;gap:8px;
+  max-width:1200px;margin:0 auto 48px;
+  padding:0 24px;
+  display:flex;justify-content:center;align-items:center;gap:6px;
 }
 .pagination button{
-  padding:6px 14px;border:1px solid #d0e0da;
-  background:#fff;border-radius:6px;cursor:pointer;
-  color:#2d3e3a;font-size:.88rem;font-family:inherit;
-  transition:all .2s;
+  padding:7px 14px;border:1px solid #e0ece8;
+  background:#fff;border-radius:8px;cursor:pointer;
+  color:#2c3e3d;font-size:.85rem;font-family:inherit;
+  transition:all .2s;min-width:36px;
 }
-.pagination button:hover{background:rgba(26,138,122,.08);}
-.pagination button.active{background:#1a8a7a;color:#fff;border-color:#1a8a7a;}
-.pagination button:disabled{opacity:.4;cursor:default;}
+.pagination button:hover{background:#f0f6f4;border-color:#c8ddd6;}
+.pagination button.active{background:#4f7c82;color:#fff;border-color:#4f7c82;}
+.pagination button:disabled{opacity:.35;cursor:default;background:#f8faf9;}
 .pagination button:first-child, .pagination button:last-child {
-  font-weight:bold; padding:6px 18px;
+  font-weight:600;padding:7px 18px;
 }
-.page-info{font-size:.85rem;color:#8a7a6a;padding:0 8px;}
+.page-info{font-size:.82rem;color:#7a9e96;padding:0 6px;}
 
 /* ======= MODAL ======= */
 .modal-overlay{
   display:none;position:fixed;z-index:1000;
   top:0;left:0;right:0;bottom:0;
-  background:rgba(20,40,35,.6);
-  backdrop-filter:blur(4px);
+  background:rgba(44,62,61,.45);
+  backdrop-filter:blur(6px);
   align-items:center;justify-content:center;
   padding:20px;
 }
 .modal-overlay.open{display:flex;}
 .modal{
-  background:#fff;border-radius:16px;
-  max-width:700px;width:100%;max-height:90vh;
+  background:#fff;border-radius:18px;
+  max-width:680px;width:100%;max-height:90vh;
   overflow-y:auto;position:relative;
-  box-shadow:0 20px 60px rgba(0,0,0,.3);
-  animation:modalIn .3s ease;
+  box-shadow:0 20px 60px rgba(44,62,61,.2);
+  animation:modalIn .3s cubic-bezier(.4,0,.2,1);
 }
 @keyframes modalIn{
-  from{opacity:0;transform:translateY(30px) scale(.95)}
+  from{opacity:0;transform:translateY(20px) scale(.97)}
   to{opacity:1;transform:translateY(0) scale(1)}
 }
 .modal-close{
-  position:absolute;top:16px;right:16px;
-  width:36px;height:36px;border-radius:50%;
-  border:none;background:rgba(0,0,0,.06);
-  font-size:1.3rem;cursor:pointer;
+  position:absolute;top:14px;right:14px;
+  width:32px;height:32px;border-radius:50%;
+  border:none;background:rgba(0,0,0,.04);
+  font-size:1.2rem;cursor:pointer;z-index:2;
   display:flex;align-items:center;justify-content:center;
-  color:#666;transition:all .2s;z-index:2;
+  color:#7a9e96;transition:all .2s;
 }
-.modal-close:hover{background:#1a8a7a;color:#fff;}
+.modal-close:hover{background:#4f7c82;color:#fff;}
 .modal-illustration{
-  width:100%;height:260px;overflow:hidden;
-  background:linear-gradient(135deg,#f0f7f4,#e8f2ee);position:relative;
+  width:100%;height:220px;overflow:hidden;
+  background:linear-gradient(135deg,#e8f3ef,#d5e8e2);
+  position:relative;
 }
+.modal-illustration img{width:100%;height:100%;object-fit:cover;}
 .modal-illustration svg{width:100%;height:100%;display:block;}
-.modal-body{padding:24px 30px 30px;}
+.modal-body{padding:20px 28px 28px;}
 .modal-word{
-  font-family:"Ma Shan Zheng","STKaiti","KaiTi",serif;
-  font-size:2.2rem;color:#2d3e3a;
-  letter-spacing:4px;
+  font-family:"ZCOOL XiaoWei","Ma Shan Zheng","STKaiti","KaiTi",serif;
+  font-size:2rem;color:#2c5a52;
+  letter-spacing:6px;font-weight:400;
 }
 .modal-pinyin{
-  font-size:1.05rem;color:#7a9e94;margin:6px 0 14px;
+  font-size:.95rem;color:#7a9e96;margin:4px 0 12px;
+  letter-spacing:1px;
 }
-.modal-story{
-  line-height:1.9;font-size:1.05rem;color:#2d3e3a;
-}
-.modal-story p{margin-bottom:12px;}
+.modal-story{line-height:1.9;font-size:1rem;color:#2c3e3d;}
+.modal-story p{margin-bottom:10px;}
 .modal-story-text{
-  background:#f5faf8;border:1px solid #d0e8e0;
-  border-left:3px solid #1a8a7a;
-  padding:14px 18px;border-radius:0 8px 8px 0;
-  margin-bottom:16px;line-height:1.9;
-  font-size:1.05rem;color:#2d3e3a;
+  background:#f4f9f7;border:1px solid #d8ece4;
+  border-left:3px solid #4f7c82;
+  padding:14px 18px;border-radius:0 10px 10px 0;
+  margin-bottom:14px;line-height:1.9;
+  font-size:.95rem;color:#2c3e3d;
 }
 .modal-label{
-  color:#1a8a7a;font-weight:bold;
-  margin-top:18px;margin-bottom:4px;
-  font-size:1rem;
-  border-left:3px solid #1a8a7a;padding-left:10px;
+  color:#4f7c82;font-weight:600;
+  margin-top:16px;margin-bottom:4px;
+  font-size:.92rem;
+  border-left:3px solid #4f7c82;padding-left:10px;
 }
 .modal-example{
-  background:#f0f7f4;padding:12px 16px;border-radius:8px;
-  margin:8px 0 0;font-style:italic;color:#4a665d;
-  line-height:1.7;font-size:1rem;
+  background:#f4f9f7;padding:12px 16px;border-radius:8px;
+  margin:6px 0 0;font-style:italic;color:#4a665f;
+  line-height:1.7;font-size:.92rem;
 }
 
 /* Modal Nav */
 .modal-nav{
   display:flex;justify-content:space-between;align-items:center;
-  margin-top:24px;padding-top:16px;
-  border-top:1px solid #d0e8e0;gap:12px;
+  margin-top:20px;padding-top:14px;
+  border-top:1px solid #e0ece8;gap:12px;
 }
 .btn-nav{
-  background:#f0f7f4;border:1px solid #d0e0da;
+  background:#f4f9f7;border:1px solid #d8ece4;
   border-radius:8px;padding:8px 20px;
-  font-size:.9rem;font-family:inherit;color:#2d3e3a;
+  font-size:.85rem;font-family:inherit;font-weight:500;color:#2c3e3d;
   cursor:pointer;transition:all .2s;
   white-space:nowrap;
 }
-.btn-nav:hover{background:#1a8a7a;color:#fff;border-color:#1a8a7a;}
-.btn-nav:disabled{opacity:.3;cursor:default;background:#f0f7f4;color:#b0c5be;border-color:#e0ece6;}
-.btn-nav:disabled:hover{background:#f0f7f4;color:#b0c5be;border-color:#e0ece6;}
-.nav-index{font-size:.82rem;color:#7a9e94;text-align:center;flex:1;}
+.btn-nav:hover{background:#4f7c82;color:#fff;border-color:#4f7c82;}
+.btn-nav:disabled{opacity:.3;cursor:default;background:#f8faf9;color:#b8d0c8;border-color:#e8f0ec;}
+.btn-nav:disabled:hover{background:#f8faf9;color:#b8d0c8;border-color:#e8f0ec;}
+.nav-index{font-size:.8rem;color:#7a9e96;text-align:center;flex:1;letter-spacing:.5px;}
 
 /* ======= RESPONSIVE ======= */
 @media(max-width:768px){
-  .header h1{font-size:2rem;letter-spacing:4px;}
-  .header-inner{padding:28px 16px 22px;}
-  .search-box{padding:12px 14px;flex-direction:column;}
+  .header h1{font-size:2.2rem;letter-spacing:6px;}
+  .header-inner{padding:36px 16px 48px;}
+  .search-box{padding:14px 16px;flex-direction:column;}
   .search-box input{width:100%;min-width:auto;}
-  .grid{grid-template-columns:1fr;gap:14px;}
-  .modal-body{padding:18px 20px 24px;}
-  .modal-illustration{height:180px;}
-  .modal-word{font-size:1.6rem;}
+  .grid{grid-template-columns:1fr;gap:14px;padding:0 16px;}
+  .cat-bar{padding:0 16px;}
+  .stats{padding:0 16px;}
+  .pagination{padding:0 16px;}
+  .toolbar{padding:0 16px;}
+  .modal-body{padding:16px 20px 22px;}
+  .modal-illustration{height:160px;}
+  .modal-word{font-size:1.5rem;}
 }
 @media(max-width:480px){
-  .header h1{font-size:1.5rem;}
+  .header h1{font-size:1.6rem;letter-spacing:4px;}
+  .header-inner{padding:28px 14px 40px;}
+  .header p{font-size:.95rem;}
   .cat-bar{gap:4px;}
-  .cat-tab{padding:4px 10px;font-size:.75rem;}
+  .cat-tab{padding:5px 12px;font-size:.75rem;}
+  .card-illustration{height:130px;}
+  .grid{gap:12px;}
 }
 
 /* ======= LOADING ======= */
 .loading{
-  text-align:center;padding:60px 20px;color:#7a9e94;
+  text-align:center;padding:60px 20px;color:#7a9e96;
 }
 .loading-spinner{
-  display:inline-block;width:40px;height:40px;
-  border:3px solid #d0e8e0;border-top-color:#1a8a7a;
-  border-radius:50%;animation:spin .8s linear infinite;
+  display:inline-block;width:36px;height:36px;
+  border:2.5px solid #d8ece4;border-top-color:#4f7c82;
+  border-radius:50%;animation:spin .7s linear infinite;
   margin-bottom:12px;
 }
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* ======= SCROLLBAR ======= */
-::-webkit-scrollbar{width:8px}
-::-webkit-scrollbar-track{background:#f0f7f4}
-::-webkit-scrollbar-thumb{background:#b8d5cc;border-radius:4px}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#f0f6f4}
+::-webkit-scrollbar-thumb{background:#c0d8d0;border-radius:3px}
 ::-webkit-scrollbar-thumb:hover{background:#9ac0b4}
+
+/* ======= FADE IN ANIMATIONS ======= */
+.card{animation:fadeUp .4s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.card:nth-child(1){animation-delay:0s}
+.card:nth-child(2){animation-delay:.04s}
+.card:nth-child(3){animation-delay:.08s}
+.card:nth-child(4){animation-delay:.12s}
+.card:nth-child(5){animation-delay:.16s}
+.card:nth-child(6){animation-delay:.2s}
 </style>
 </head>
 <body>
@@ -330,7 +374,7 @@ body{
 <!-- HEADER -->
 <header class="header">
   <div class="header-inner">
-    <h1>📜 成语故事大全</h1>
+    <h1>成语故事大全</h1>
     <p>收录 <strong>1000</strong> 条经典成语典故 · 传承中华文化智慧</p>
     <span class="header-badge">🏮 每日一成语 · 温故而知新</span>
   </div>
@@ -386,28 +430,25 @@ body{
 <script src="stories.js"></script>
 <script>
 // ======= ILLUSTRATION ENGINE =======
-// Chinese ink-wash style SVG generator
+// Fresh watercolor-style SVG generator
 
 const CATEGORY_COLORS = {
-  '动物': {bg:['#e8f5ee','#d4ece2'],ink:'#2d6b5a',acc:'#3d8b75'},
-  '自然': {bg:['#e0f0e8','#cce8dc'],ink:'#2d6b4a',acc:'#4a9a7a'},
-  '人物': {bg:['#e8f0ee','#d4e8e2'],ink:'#2d5b5a',acc:'#3d7a7a'},
-  '战争': {bg:['#e8ece8','#d4e0da'],ink:'#3a5a4a',acc:'#5a7a5a'},
-  '哲理': {bg:['#e0e8f0','#cce0e8'],ink:'#2d4a6b',acc:'#4a6a8b'},
-  '情感': {bg:['#f0e8ec','#e4dce0'],ink:'#5a3d4a',acc:'#8b5a6b'},
-  '行为': {bg:['#e4ece4','#d4e0d4'],ink:'#3a5a3a',acc:'#5a7a5a'},
-  '文化': {bg:['#e8e8f0','#d8dce8'],ink:'#3d4a5a',acc:'#5a6a8b'},
-  '综合': {bg:['#ecf0ec','#dce4dc'],ink:'#3a5a4a',acc:'#5a7a5a'}
+  '动物': {bg:['#dceee6','#c4e0d6'],ink:'#3d7a6a',acc:'#5a9a86'},
+  '自然': {bg:['#d4ece2','#bce2d4'],ink:'#3d7a5a',acc:'#5a9a7a'},
+  '人物': {bg:['#dceeea','#c4e0da'],ink:'#3d6a6a',acc:'#5a8a86'},
+  '战争': {bg:['#dce8e0','#c8dcd4'],ink:'#4a6a5a',acc:'#6a8a76'},
+  '哲理': {bg:['#d8e4ee','#c4d8e6'],ink:'#3d5a7a',acc:'#5a7a96'},
+  '情感': {bg:['#eee4ea','#e0d4de'],ink:'#6a4a5a',acc:'#8a6a7a'},
+  '行为': {bg:['#dce8dc','#c8dcc8'],ink:'#4a6a4a',acc:'#6a8a6a'},
+  '文化': {bg:['#e4e4ee','#d4d4e4'],ink:'#4a5a6a',acc:'#6a7a96'},
+  '综合': {bg:['#e4ece4','#d4e0d4'],ink:'#4a6a5a',acc:'#6a8a6a'}
 };
-
 
 // IMAGE_MAP is loaded from image_map.js (global variable)
 function getImagePath(word) {
-  // Check image_map first (has relative path like 'images/阿鼻地狱.png')
   if (IMAGE_MAP[word] && IMAGE_MAP[word].length > 0) {
     return IMAGE_MAP[word];
   }
-  // Fallback: construct relative path from word
   const safe = word.replace(/[^a-zA-Z0-9_\-]/g, '_');
   return 'images/' + safe + '.jpg';
 }
@@ -421,14 +462,13 @@ function generateIllustration(word, pinyin, category) {
   const firstChar = word.charAt(0);
   const seed = word.charCodeAt(0) + (word.charCodeAt(1)||0);
 
-  // Generate pseudo-random based on seed
   const rand = (min, max) => {
     const r = Math.sin(seed * (++rand.counter||0) * 9.99) * 10000;
     return min + Math.abs(r % (max - min));
   };
   rand.counter = 0;
 
-  const w = 400, h = 260;
+  const w = 400, h = 220;
   const cx = w/2, cy = h/2;
   const elements = [];
 
@@ -439,113 +479,26 @@ function generateIllustration(word, pinyin, category) {
       <stop offset="0%" stop-color="${colors.bg[0]}"/>
       <stop offset="100%" stop-color="${colors.bg[1]}"/>
     </linearGradient>
-    <filter id="blur-${seed}"><feGaussianBlur stdDeviation="${rand(2,5)}"/></filter>
-    <filter id="blur2-${seed}"><feGaussianBlur stdDeviation="${rand(6,12)}"/></filter>
+    <filter id="blur-${seed}"><feGaussianBlur stdDeviation="${rand(2,4)}"/></filter>
+    <filter id="blur2-${seed}"><feGaussianBlur stdDeviation="${rand(5,10)}"/></filter>
   </defs>
   <rect width="${w}" height="${h}" fill="${bgGrad}"/>`);
 
-  // Decorative ink wash splotches (category-based)
-  const splotchCount = Math.floor(rand(2, 5));
+  // Decorative splotches
+  const splotchCount = Math.floor(rand(2, 4));
   for (let i = 0; i < splotchCount; i++) {
-    const sx = rand(20, w-20), sy = rand(20, h-20);
-    const sr = rand(30, 80);
-    const opacity = rand(2, 8) / 100;
+    const sx = rand(30, w-30), sy = rand(30, h-30);
+    const sr = rand(25, 60);
+    const opacity = rand(3, 7) / 100;
     elements.push(`<circle cx="${sx}" cy="${sy}" r="${sr}" fill="${colors.ink}" opacity="${opacity}" filter="url(#blur2-${seed})"/>`);
   }
 
-  // Category-specific decorative elements
-  const decoElements = {
-    '动物': () => {
-      // Animal footprint / silhouette
-      const px = rand(60, w-60), py = rand(60, h-60);
-      elements.push(`<path d="M${px} ${py-25}C${px+12} ${py-35} ${px+25} ${py-20} ${px+15} ${py-5}Z"
-        fill="${colors.ink}" opacity=".15" filter="url(#blur-${seed})"/>`);
-      elements.push(`<path d="M${px-20} ${py+5}C${px-30} ${py-8} ${px-10} ${py-18} ${px} ${py-5}Z"
-        fill="${colors.ink}" opacity=".12" filter="url(#blur-${seed})"/>`);
-    },
-    '自然': () => {
-      // Mountain peaks
-      const mx = rand(80, w-80);
-      elements.push(`<path d="M${mx-80} ${h-20} L${mx-40} ${rand(40,90)} L${mx} ${h-20}" fill="${colors.ink}" opacity=".08" filter="url(#blur2-${seed})"/>`);
-      elements.push(`<path d="M${mx-30} ${h-20} L${mx+20} ${rand(60,110)} L${mx+70} ${h-20}" fill="${colors.acc}" opacity=".06" filter="url(#blur2-${seed})"/>`);
-      // Cloud
-      const clx = rand(30, w-80);
-      elements.push(`<ellipse cx="${clx}" cy="${rand(30,70)}" rx="${rand(30,50)}" ry="${rand(8,14)}" fill="white" opacity=".3" filter="url(#blur-${seed})"/>`);
-    },
-    '人物': () => {
-      // Brush strokes suggesting a person
-      const bx = rand(120, w-120), by = rand(80, h-80);
-      elements.push(`<path d="M${bx} ${by+30} Q${bx+10} ${by-20} ${bx+5} ${by-50}" stroke="${colors.ink}" stroke-width="2" fill="none" opacity=".3"/>`);
-      elements.push(`<circle cx="${bx+2}" cy="${by-55}" r="${rand(5,8)}" fill="${colors.ink}" opacity=".2"/>`);
-    },
-    '战争': () => {
-      // Crossed swords
-      const sx = rand(120, w-120), sy = rand(70, h-70);
-      elements.push(`<line x1="${sx-25}" y1="${sy-25}" x2="${sx+25}" y2="${sy+25}" stroke="${colors.acc}" stroke-width="2" opacity=".2"/>`);
-      elements.push(`<line x1="${sx+25}" y1="${sy-25}" x2="${sx-25}" y2="${sy+25}" stroke="${colors.acc}" stroke-width="2" opacity=".2"/>`);
-    },
-    '哲理': () => {
-      // Circle / yin yang hint
-      const rx = rand(100, w-100), ry = rand(80, h-80);
-      elements.push(`<circle cx="${rx}" cy="${ry}" r="${rand(20,35)}" fill="none" stroke="${colors.ink}" stroke-width="1.5" opacity=".2"/>`);
-      elements.push(`<circle cx="${rx+rand(-8,8)}" cy="${ry+rand(-8,8)}" r="${rand(3,6)}" fill="${colors.ink}" opacity=".15"/>`);
-    },
-    '情感': () => {
-      // Heart-like floating leaves
-      for (let i = 0; i < 3; i++) {
-        const lx = rand(50, w-50), ly = rand(40, h-40);
-        elements.push(`<path d="M${lx} ${ly}C${lx+rand(5,15)} ${ly-rand(5,15)} ${lx+rand(10,20)} ${ly} ${lx} ${ly+rand(5,10)}" fill="${colors.acc}" opacity=".1"/>`);
-      }
-    },
-    '行为': () => {
-      // Footsteps
-      for (let i = 0; i < 3; i++) {
-        const fx = rand(60, w-60) + i*rand(15,25);
-        const fy = rand(70, h-40);
-        elements.push(`<ellipse cx="${fx}" cy="${fy}" rx="${rand(6,10)}" ry="${rand(10,14)}" fill="none" stroke="${colors.ink}" stroke-width="1" opacity=".15" transform="rotate(${rand(-15,15)} ${fx} ${fy})"/>`);
-      }
-    },
-    '文化': () => {
-      // Scroll / brush
-      const vx = rand(100, w-100), vy = rand(60, h-60);
-      elements.push(`<rect x="${vx-30}" y="${vy-40}" width="${rand(50,80)}" height="${rand(60,90)}" rx="3" fill="none" stroke="${colors.acc}" stroke-width="1" opacity=".15"/>`);
-      elements.push(`<line x1="${vx}" y1="${vy-30}" x2="${vx}" y2="${vy+rand(30,50)}" stroke="${colors.ink}" stroke-width="1" opacity=".12"/>`);
-    },
-    '综合': () => {
-      // Abstract dots
-      for (let i = 0; i < 5; i++) {
-        const dx = rand(30, w-30), dy = rand(30, h-30);
-        elements.push(`<circle cx="${dx}" cy="${dy}" r="${rand(2,5)}" fill="${colors.ink}" opacity=".1"/>`);
-      }
-    }
-  };
-
-  // Call the category decorator
-  if (decoElements[category]) {
-    decoElements[category]();
-  } else {
-    decoElements['综合']();
-  }
-
-  // Calligraphy of first character (large, artistic)
-  const fontSize = word.length >= 4 ? 80 : 100;
-  elements.push(`<text x="${cx}" y="${cy+28}" text-anchor="middle"
-    font-family="Ma Shan Zheng,STKaiti,KaiTi,serif"
-    font-size="${fontSize}" fill="${colors.ink}" opacity=".12"
-    transform="rotate(${rand(-8,8)} ${cx} ${cy})"
-    filter="url(#blur-${seed})">${firstChar}</text>`);
-
-  // Stamp/seal in bottom right
-  const sealX = w-50, sealY = h-30;
-  elements.push(`<rect x="${sealX-22}" y="${sealY-22}" width="44" height="44" rx="4"
-    fill="none" stroke="#cc3333" stroke-width="1.5" opacity=".6"/>`);
-  elements.push(`<text x="${sealX}" y="${sealY+6}" text-anchor="middle"
-    font-family="Ma Shan Zheng,STKaiti,KaiTi,serif"
-    font-size="18" fill="#cc3333" opacity=".7">${category.slice(0,2)}</text>`);
-
-  // Bottom watermark line
-  elements.push(`<line x1="${cx-rand(40,80)}" y1="${h-12}" x2="${cx+rand(40,80)}" y2="${h-12}"
-    stroke="${colors.ink}" stroke-width="0.5" opacity=".15"/>`);
+  // Calligraphy of first character
+  const fontSize = word.length >= 4 ? 65 : 80;
+  elements.push(`<text x="${cx}" y="${cy+24}" text-anchor="middle"
+    font-family="ZCOOL XiaoWei,Ma Shan Zheng,STKaiti,KaiTi,serif"
+    font-size="${fontSize}" fill="${colors.ink}" opacity=".1"
+    transform="rotate(${rand(-6,6)} ${cx} ${cy})">${firstChar}</text>`);
 
   return `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">
     ${elements.join('\n    ')}
@@ -560,7 +513,6 @@ let searchQuery = '';
 let favOnly = false;
 let data = [];
 
-// Favorites management
 function getFavs() {
   try { return JSON.parse(localStorage.getItem('idiomFavs') || '[]'); }
   catch { return []; }
@@ -575,16 +527,11 @@ function toggleFav(word) {
 }
 function isFav(word) { return getFavs().includes(word); }
 
-// Filter & search
 function getFiltered() {
   let result = [...data];
-
-  // Category filter
   if (currentCat !== 'all') {
     result = result.filter(d => d.c === currentCat);
   }
-
-  // Search
   if (searchQuery.trim()) {
     const q = searchQuery.trim().toLowerCase();
     result = result.filter(d =>
@@ -594,21 +541,16 @@ function getFiltered() {
       d.d.toLowerCase().includes(q)
     );
   }
-
-  // Favorites only
   if (favOnly) {
     const favs = getFavs();
     result = result.filter(d => favs.includes(d.w));
   }
-
   return result;
 }
 
-// Render grid
 function render() {
   const filtered = getFiltered();
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE) || 1;
-
   if (currentPage > totalPages) currentPage = totalPages;
 
   const start = (currentPage - 1) * PAGE_SIZE;
@@ -618,15 +560,14 @@ function render() {
   const favs = getFavs();
 
   if (filtered.length === 0) {
-    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#8a7a6a;"><p style="font-size:2rem;margin-bottom:8px;">🔍</p><p>没有找到匹配的成语</p><button class="btn btn-outline btn-sm" onclick="resetSearch()" style="margin-top:12px;">重置搜索</button></div>';
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#7a9e96;"><p style="font-size:2rem;margin-bottom:8px;">🔍</p><p>没有找到匹配的成语</p><button class="btn btn-outline btn-sm" onclick="resetSearch()" style="margin-top:14px;">重置搜索</button></div>';
   } else {
-    grid.innerHTML = page.map(d => `
-      <div class="card" onclick="openModal('${d.w}')">
+    grid.innerHTML = page.map((d, idx) => `
+      <div class="card" onclick="openModal('${d.w}')" style="animation-delay:${idx*0.04}s">
         <div class="card-illustration">${(()=>{
           const imgPath = getImagePath(d.w);
-          // Test if file exists by trying to load image (simple approach: check if IMAGE_MAP has it)
           if (hasRealImage(d.w)) {
-            return `<img src="${imgPath}" alt="${d.w}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.innerHTML='${generateIllustration(d.w, d.p, d.c).replace(/'/g, "\\'")}'">`;
+            return `<img src="${imgPath}" alt="${d.w}" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='${generateIllustration(d.w, d.p, d.c).replace(/'/g, "\\'")}'">`;
           }
           return generateIllustration(d.w, d.p, d.c);
         })()}</div>
@@ -641,11 +582,8 @@ function render() {
     `).join('');
   }
 
-  // Stats
   document.getElementById('resultCount').textContent = `共 ${filtered.length} 条成语`;
   document.getElementById('viewingInfo').textContent = `第 ${currentPage} 页 / 共 ${totalPages} 页`;
-
-  // Pagination
   renderPagination(totalPages);
 }
 
@@ -653,8 +591,6 @@ function renderPagination(total) {
   const el = document.getElementById('pagination');
   let html = '';
   html += `<button ${currentPage<=1?'disabled':''} onclick="goPage(${currentPage-1})">‹ 上一页</button>`;
-
-  // Smart page numbers
   const pages = [];
   for (let i = 1; i <= total; i++) {
     if (i === 1 || i === total || (i >= currentPage-2 && i <= currentPage+2)) {
@@ -664,15 +600,13 @@ function renderPagination(total) {
     }
   }
   pages.forEach(p => {
-    if (p === -1) html += '<span style="color:#8a7a6a;padding:0 4px;">…</span>';
+    if (p === -1) html += '<span style="color:#a8c0b8;padding:0 4px;">…</span>';
     else html += `<button class="${p===currentPage?'active':''}" onclick="goPage(${p})">${p}</button>`;
   });
-
   html += `<button ${currentPage>=total?'disabled':''} onclick="goPage(${currentPage+1})">下一页 ›</button>`;
   el.innerHTML = html;
 }
 
-// Navigation
 function goPage(p) {
   currentPage = p;
   render();
@@ -700,15 +634,13 @@ let modalList = [];
 function openModal(word) {
   const d = data.find(item => item.w === word);
   if (!d) return;
-  
+
   currentWord = word;
-  // Get the current filtered list for navigation
   modalList = getFiltered();
 
-  // Regenerate illustration with fresh random seed
   const imgPath = getImagePath(d.w);
   if (hasRealImage(d.w)) {
-    document.getElementById('modalIllus').innerHTML = `<img src="${imgPath}" alt="${d.w}" style="width:100%;height:100%;object-fit:cover;" onerror="this.innerHTML='${generateIllustration(d.w, d.p, d.c).replace(/'/g, "\\'")}'">`;
+    document.getElementById('modalIllus').innerHTML = `<img src="${imgPath}" alt="${d.w}" onerror="this.style.display='none';this.parentElement.innerHTML='${generateIllustration(d.w, d.p, d.c).replace(/'/g, "\\'")}'">`;
   } else {
     document.getElementById('modalIllus').innerHTML = generateIllustration(d.w, d.p, d.c);
   }
@@ -716,9 +648,7 @@ function openModal(word) {
   document.getElementById('modalWord').textContent = d.w;
   document.getElementById('modalPinyin').textContent = d.p;
 
-  // Format story
   let storyHtml = '';
-  // Children's story (大白话) first
   if (typeof IDIOM_STORIES !== 'undefined' && IDIOM_STORIES[d.w]) {
     storyHtml += `<div class="modal-label">📚 成语故事</div><div class="modal-story-text">${IDIOM_STORIES[d.w]}</div>`;
   }
@@ -733,7 +663,6 @@ function openModal(word) {
 
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
-  
   updateNavButtons();
 }
 
@@ -755,7 +684,6 @@ function navItem(direction) {
 function init() {
   data = IDIOM_DATA;
 
-  // Populate category filter
   const cats = [...new Set(data.map(d => d.c))].sort();
   const filterEl = document.getElementById('catFilter');
   cats.forEach(c => {
@@ -764,19 +692,17 @@ function init() {
     filterEl.appendChild(opt);
   });
 
-  // Category tabs
   const tabBar = document.getElementById('catTabs');
+  const emojiMap = {'动物':'🐾','自然':'🏔️','人物':'👤','战争':'⚔️','哲理':'☯️','情感':'💝','行为':'👣','文化':'📜','综合':'✨'};
   let tabHtml = `<button class="cat-tab active" data-cat="all" onclick="filterCat('all')">🏮 全部</button>`;
   cats.forEach(c => {
-    const emoji = {'动物':'🐾','自然':'🏔️','人物':'👤','战争':'⚔️','哲理':'☯️','情感':'💝','行为':'👣','文化':'📜','综合':'✨'};
-    tabHtml += `<button class="cat-tab" data-cat="${c}" onclick="filterCat('${c}')">${emoji[c]||'📖'} ${c}</button>`;
+    tabHtml += `<button class="cat-tab" data-cat="${c}" onclick="filterCat('${c}')">${emojiMap[c]||'📖'} ${c}</button>`;
   });
   tabBar.innerHTML = tabHtml;
 
   render();
 }
 
-// Event handlers
 function filterCat(cat) {
   currentCat = cat;
   currentPage = 1;
@@ -789,12 +715,9 @@ function toggleFavBtn(el, word) {
   const now = toggleFav(word);
   el.textContent = now ? '♥' : '♡';
   el.classList.toggle('active', now);
-
-  // If in favorites-only mode, update display
   if (favOnly) render();
 }
 
-// DOM events
 document.addEventListener('DOMContentLoaded', init);
 
 document.getElementById('searchInput').addEventListener('input', function() {
@@ -833,13 +756,11 @@ document.getElementById('modal').addEventListener('click', function(e) {
   }
 });
 
-// Keyboard shortcuts
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     document.getElementById('modal').classList.remove('open');
     document.body.style.overflow = '';
   }
-  // Modal navigation with arrow keys
   if (document.getElementById('modal').classList.contains('open')) {
     if (e.key === 'ArrowLeft') {
       e.preventDefault();

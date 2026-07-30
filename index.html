@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>成语故事大全 - 1000条中国成语典故</title>
+<style>
+/* ======= RESET & BASE ======= */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Noto Serif SC","STKaiti","KaiTi","SimSun","Songti SC",serif;
+  background:#f5f0e8;color:#3d2b1f;min-height:100vh;
+  background-image:url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* ======= HEADER ======= */
+.header{
+  background:linear-gradient(135deg,#8b1a1a,#5c1010);
+  padding:0;
+  position:relative;overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.3);
+}
+.header::before{
+  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5L35 20L50 20L38 30L42 45L30 35L18 45L22 30L10 20L25 20Z' fill='rgba(255,215,0,0.08)'/%3E%3C/svg%3E") repeat;
+  opacity:.12;
+}
+.header-inner{
+  max-width:1200px;margin:0 auto;padding:40px 20px 30px;
+  position:relative;z-index:1;
+  text-align:center;
+}
+.header h1{
+  font-family:"Ma Shan Zheng","STKaiti","KaiTi",serif;
+  font-size:3rem;color:#ffd700;
+  text-shadow:2px 2px 4px rgba(0,0,0,.5);
+  letter-spacing:8px;
+  position:relative;display:inline-block;
+}
+.header h1::after{
+  content:'';position:absolute;bottom:-8px;left:50%;
+  transform:translateX(-50%);
+  width:80%;height:2px;
+  background:linear-gradient(90deg,transparent,#ffd700,transparent);
+}
+.header p{
+  color:#e8d5b0;margin-top:14px;font-size:1.05rem;
+  letter-spacing:2px;opacity:.85;
+}
+.header-badge{
+  display:inline-block;background:rgba(255,215,0,.15);
+  border:1px solid rgba(255,215,0,.3);
+  border-radius:20px;padding:4px 16px;
+  color:#ffd700;font-size:.85rem;margin-top:12px;
+}
+
+/* ======= SEARCH & FILTER ======= */
+.toolbar{
+  max-width:1200px;margin:-24px auto 0;padding:0 20px;
+  position:relative;z-index:10;
+}
+.search-box{
+  background:#fff;border-radius:12px;
+  padding:16px 20px;
+  box-shadow:0 4px 24px rgba(0,0,0,.08);
+  display:flex;gap:12px;flex-wrap:wrap;
+  align-items:center;
+}
+.search-box input{
+  flex:1;min-width:200px;
+  padding:10px 16px;border:2px solid #e0d5c5;
+  border-radius:8px;font-size:1rem;
+  font-family:inherit;color:#3d2b1f;
+  outline:none;transition:border-color .3s;
+  background:#fefcf8;
+}
+.search-box input:focus{border-color:#8b1a1a;}
+.search-box input::placeholder{color:#b8a894;}
+
+.search-box select{
+  padding:10px 14px;border:2px solid #e0d5c5;
+  border-radius:8px;font-size:.95rem;
+  font-family:inherit;color:#3d2b1f;
+  background:#fefcf8;cursor:pointer;
+  outline:none;
+}
+.search-box select:focus{border-color:#8b1a1a;}
+
+.btn{
+  padding:10px 24px;border:none;border-radius:8px;
+  font-size:.95rem;font-family:inherit;
+  cursor:pointer;transition:all .3s;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.btn-primary{background:#8b1a1a;color:#fff;}
+.btn-primary:hover{background:#6b1313;transform:translateY(-1px);}
+.btn-outline{
+  background:transparent;border:1px solid #8b1a1a;
+  color:#8b1a1a;
+}
+.btn-outline:hover{background:#8b1a1a;color:#fff;}
+.btn-sm{padding:6px 14px;font-size:.85rem;}
+
+/* ======= CATEGORY TABS ======= */
+.cat-bar{
+  max-width:1200px;margin:16px auto 0;padding:0 20px;
+  display:flex;gap:6px;flex-wrap:wrap;
+}
+.cat-tab{
+  padding:6px 16px;border-radius:16px;
+  font-size:.82rem;color:#6b5a4a;
+  background:rgba(255,255,255,.6);border:1px solid #e0d5c5;
+  cursor:pointer;transition:all .2s;
+  font-family:inherit;
+}
+.cat-tab:hover{background:#e8d5b0;}
+.cat-tab.active{background:#8b1a1a;color:#fff;border-color:#8b1a1a;}
+
+/* ======= STATS ======= */
+.stats{
+  max-width:1200px;margin:12px auto 0;padding:0 20px;
+  display:flex;justify-content:space-between;
+  font-size:.85rem;color:#8a7a6a;
+}
+
+/* ======= GRID ======= */
+.grid{
+  max-width:1200px;margin:16px auto 40px;
+  padding:0 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:20px;
+}
+
+/* ======= CARD ======= */
+.card{
+  background:#fff;border-radius:12px;overflow:hidden;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
+  cursor:pointer;transition:all .3s;
+  position:relative;
+  border:1px solid rgba(139,26,26,.08);
+  aspect-ratio:5/6;
+  display:flex;flex-direction:column;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 30px rgba(139,26,26,.12);
+}
+.card-illustration{
+  width:100%;height:65%;overflow:hidden;
+  background:#f8f4ee;position:relative;
+  flex-shrink:0;
+}
+.card-illustration svg{width:100%;height:100%;display:block;}
+.card-body{padding:16px 18px 18px;}
+.card-word{
+  font-family:"Ma Shan Zheng","STKaiti","KaiTi",serif;
+  font-size:1.5rem;color:#3d2b1f;
+  margin-bottom:4px;font-weight:400;
+}
+.card-pinyin{
+  font-size:.95rem;color:#8a7a6a;margin-bottom:8px;
+}
+.card-explanation{
+  font-size:1rem;color:#5a4a3a;line-height:1.6;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.card-category{
+  position:absolute;top:12px;right:12px;
+  background:rgba(139,26,26,.85);color:#fff;
+  padding:3px 12px;border-radius:10px;
+  font-size:.85rem;
+}
+.card-fav{
+  position:absolute;top:12px;left:12px;
+  background:rgba(255,255,255,.85);border:none;
+  width:32px;height:32px;border-radius:50%;
+  cursor:pointer;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;color:#ccc;
+}
+.card-fav.active{color:#ff4444;}
+.card-fav:hover{transform:scale(1.15);}
+
+/* ======= PAGINATION ======= */
+.pagination{
+  max-width:1200px;margin:0 auto 40px;
+  padding:0 20px;
+  display:flex;justify-content:center;align-items:center;gap:8px;
+}
+.pagination button{
+  padding:6px 14px;border:1px solid #d0c5b5;
+  background:#fff;border-radius:6px;cursor:pointer;
+  color:#3d2b1f;font-size:.88rem;font-family:inherit;
+  transition:all .2s;
+}
+.pagination button:hover{background:#e8d5b0;}
+.pagination button.active{background:#8b1a1a;color:#fff;border-color:#8b1a1a;}
+.pagination button:disabled{opacity:.4;cursor:default;}
+.pagination button:first-child, .pagination button:last-child {
+  font-weight:bold; padding:6px 18px;
+}
+.page-info{font-size:.85rem;color:#8a7a6a;padding:0 8px;}
+
+/* ======= MODAL ======= */
+.modal-overlay{
+  display:none;position:fixed;z-index:1000;
+  top:0;left:0;right:0;bottom:0;
+  background:rgba(30,20,10,.75);
+  backdrop-filter:blur(4px);
+  align-items:center;justify-content:center;
+  padding:20px;
+}
+.modal-overlay.open{display:flex;}
+.modal{
+  background:#fff;border-radius:16px;
+  max-width:700px;width:100%;max-height:90vh;
+  overflow-y:auto;position:relative;
+  box-shadow:0 20px 60px rgba(0,0,0,.3);
+  animation:modalIn .3s ease;
+}
+@keyframes modalIn{
+  from{opacity:0;transform:translateY(30px) scale(.95)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.modal-close{
+  position:absolute;top:16px;right:16px;
+  width:36px;height:36px;border-radius:50%;
+  border:none;background:rgba(0,0,0,.06);
+  font-size:1.3rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  color:#666;transition:all .2s;z-index:2;
+}
+.modal-close:hover{background:#8b1a1a;color:#fff;}
+.modal-illustration{
+  width:100%;height:260px;overflow:hidden;
+  background:#f5f0e8;position:relative;
+}
+.modal-illustration svg{width:100%;height:100%;display:block;}
+.modal-body{padding:24px 30px 30px;}
+.modal-word{
+  font-family:"Ma Shan Zheng","STKaiti","KaiTi",serif;
+  font-size:2.2rem;color:#3d2b1f;
+  letter-spacing:4px;
+}
+.modal-pinyin{
+  font-size:1.05rem;color:#8a7a6a;margin:6px 0 14px;
+}
+.modal-story{
+  line-height:1.9;font-size:1.05rem;color:#3d2b1f;
+}
+.modal-story p{margin-bottom:12px;}
+.modal-story-text{
+  background:#fefcf8;border:1px solid #e8ddd0;
+  border-left:3px solid #8b1a1a;
+  padding:14px 18px;border-radius:0 8px 8px 0;
+  margin-bottom:16px;line-height:1.9;
+  font-size:1.05rem;color:#3d2b1f;
+}
+.modal-label{
+  color:#8b1a1a;font-weight:bold;
+  margin-top:18px;margin-bottom:4px;
+  font-size:1rem;
+  border-left:3px solid #8b1a1a;padding-left:10px;
+}
+.modal-example{
+  background:#f8f4ee;padding:12px 16px;border-radius:8px;
+  margin:8px 0 0;font-style:italic;color:#5a4a3a;
+  line-height:1.7;font-size:1rem;
+}
+
+/* Modal Nav */
+.modal-nav{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:24px;padding-top:16px;
+  border-top:1px solid #e8ddd0;gap:12px;
+}
+.btn-nav{
+  background:#f5f0e8;border:1px solid #d0c5b5;
+  border-radius:8px;padding:8px 20px;
+  font-size:.9rem;font-family:inherit;color:#3d2b1f;
+  cursor:pointer;transition:all .2s;
+  white-space:nowrap;
+}
+.btn-nav:hover{background:#8b1a1a;color:#fff;border-color:#8b1a1a;}
+.btn-nav:disabled{opacity:.3;cursor:default;background:#f5f0e8;color:#b8a894;border-color:#e0d5c5;}
+.btn-nav:disabled:hover{background:#f5f0e8;color:#b8a894;border-color:#e0d5c5;}
+.nav-index{font-size:.82rem;color:#8a7a6a;text-align:center;flex:1;}
+
+/* ======= RESPONSIVE ======= */
+@media(max-width:768px){
+  .header h1{font-size:2rem;letter-spacing:4px;}
+  .header-inner{padding:28px 16px 22px;}
+  .search-box{padding:12px 14px;flex-direction:column;}
+  .search-box input{width:100%;min-width:auto;}
+  .grid{grid-template-columns:1fr;gap:14px;}
+  .modal-body{padding:18px 20px 24px;}
+  .modal-illustration{height:180px;}
+  .modal-word{font-size:1.6rem;}
+}
+@media(max-width:480px){
+  .header h1{font-size:1.5rem;}
+  .cat-bar{gap:4px;}
+  .cat-tab{padding:4px 10px;font-size:.75rem;}
+}
+
+/* ======= LOADING ======= */
+.loading{
+  text-align:center;padding:60px 20px;color:#8a7a6a;
+}
+.loading-spinner{
+  display:inline-block;width:40px;height:40px;
+  border:3px solid #e0d5c5;border-top-color:#8b1a1a;
+  border-radius:50%;animation:spin .8s linear infinite;
+  margin-bottom:12px;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ======= SCROLLBAR ======= */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:#f5f0e8}
+::-webkit-scrollbar-thumb{background:#c8b8a8;border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:#b0a090}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <h1>📜 成语故事大全</h1>
+    <p>收录 <strong>1000</strong> 条经典成语典故 · 传承中华文化智慧</p>
+    <span class="header-badge">🏮 每日一成语 · 温故而知新</span>
+  </div>
+</header>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="🔍 搜索成语、拼音、释义、出处...">
+    <select id="catFilter">
+      <option value="all">📚 全部分类</option>
+    </select>
+    <button class="btn btn-primary" id="randomBtn">🎲 随机</button>
+    <button class="btn btn-outline" id="favBtn">⭐ 收藏</button>
+  </div>
+</div>
+
+<!-- CATEGORY TABS -->
+<div class="cat-bar" id="catTabs"></div>
+
+<!-- STATS -->
+<div class="stats">
+  <span id="resultCount">共 1000 条成语</span>
+  <span id="viewingInfo">第 1 页</span>
+</div>
+
+<!-- GRID -->
+<div class="grid" id="grid"><div class="loading"><div class="loading-spinner"></div><p>加载中...</p></div></div>
+
+<!-- PAGINATION -->
+<div class="pagination" id="pagination"></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-illustration" id="modalIllus"></div>
+    <div class="modal-body">
+      <div class="modal-word" id="modalWord"></div>
+      <div class="modal-pinyin" id="modalPinyin"></div>
+      <div class="modal-story" id="modalStory"></div>
+      <div class="modal-nav">
+        <button class="btn-nav" id="prevBtn" onclick="navItem(-1)">‹ 上一条</button>
+        <span class="nav-index" id="navIndex"></span>
+        <button class="btn-nav" id="nextBtn" onclick="navItem(1)">下一条 ›</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="image_map.js"></script>
+<script src="stories.js"></script>
+<script>
+// ======= ILLUSTRATION ENGINE =======
+// Chinese ink-wash style SVG generator
+
+const CATEGORY_COLORS = {
+  '动物': {bg:['#e8e0d0','#d4cfc0'],ink:'#3d2b1f',acc:'#8b4513'},
+  '自然': {bg:['#dce8d4','#c8dcc0'],ink:'#2d4a2f',acc:'#4a7c59'},
+  '人物': {bg:['#e0d8d0','#d4c8c0'],ink:'#3d2b1f',acc:'#8b1a1a'},
+  '战争': {bg:['#ddd0c4','#ccc0b0'],ink:'#4a1a1a',acc:'#8b0000'},
+  '哲理': {bg:['#d8dce8','#c8d0e0'],ink:'#1f2d4a',acc:'#2d4a7c'},
+  '情感': {bg:['#e8d4d4','#dcc8c8'],ink:'#4a2d2d',acc:'#c44a4a'},
+  '行为': {bg:['#dce0d4','#ccd4c0'],ink:'#2d3d2d',acc:'#5a7c4a'},
+  '文化': {bg:['#e0d8e0','#d0c8d4'],ink:'#3d2d4a',acc:'#6b4a8b'},
+  '综合': {bg:['#e8e4dc','#dcd8d0'],ink:'#3d3020',acc:'#8b6b3d'}
+};
+
+
+// IMAGE_MAP is loaded from image_map.js (global variable)
+function getImagePath(word) {
+  // Check image_map first (has relative path like 'images/阿鼻地狱.png')
+  if (IMAGE_MAP[word] && IMAGE_MAP[word].length > 0) {
+    return IMAGE_MAP[word];
+  }
+  // Fallback: construct relative path from word
+  const safe = word.replace(/[^a-zA-Z0-9_\-]/g, '_');
+  return 'images/' + safe + '.jpg';
+}
+
+function hasRealImage(word) {
+  return IMAGE_MAP[word] && IMAGE_MAP[word].length > 0;
+}
+
+function generateIllustration(word, pinyin, category) {
+  const colors = CATEGORY_COLORS[category] || CATEGORY_COLORS['综合'];
+  const firstChar = word.charAt(0);
+  const seed = word.charCodeAt(0) + (word.charCodeAt(1)||0);
+
+  // Generate pseudo-random based on seed
+  const rand = (min, max) => {
+    const r = Math.sin(seed * (++rand.counter||0) * 9.99) * 10000;
+    return min + Math.abs(r % (max - min));
+  };
+  rand.counter = 0;
+
+  const w = 400, h = 260;
+  const cx = w/2, cy = h/2;
+  const elements = [];
+
+  // Background wash
+  const bgGrad = `url(#bg-${seed})`;
+  elements.push(`<defs>
+    <linearGradient id="bg-${seed}" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="${colors.bg[0]}"/>
+      <stop offset="100%" stop-color="${colors.bg[1]}"/>
+    </linearGradient>
+    <filter id="blur-${seed}"><feGaussianBlur stdDeviation="${rand(2,5)}"/></filter>
+    <filter id="blur2-${seed}"><feGaussianBlur stdDeviation="${rand(6,12)}"/></filter>
+  </defs>
+  <rect width="${w}" height="${h}" fill="${bgGrad}"/>`);
+
+  // Decorative ink wash splotches (category-based)
+  const splotchCount = Math.floor(rand(2, 5));
+  for (let i = 0; i < splotchCount; i++) {
+    const sx = rand(20, w-20), sy = rand(20, h-20);
+    const sr = rand(30, 80);
+    const opacity = rand(2, 8) / 100;
+    elements.push(`<circle cx="${sx}" cy="${sy}" r="${sr}" fill="${colors.ink}" opacity="${opacity}" filter="url(#blur2-${seed})"/>`);
+  }
+
+  // Category-specific decorative elements
+  const decoElements = {
+    '动物': () => {
+      // Animal footprint / silhouette
+      const px = rand(60, w-60), py = rand(60, h-60);
+      elements.push(`<path d="M${px} ${py-25}C${px+12} ${py-35} ${px+25} ${py-20} ${px+15} ${py-5}Z"
+        fill="${colors.ink}" opacity=".15" filter="url(#blur-${seed})"/>`);
+      elements.push(`<path d="M${px-20} ${py+5}C${px-30} ${py-8} ${px-10} ${py-18} ${px} ${py-5}Z"
+        fill="${colors.ink}" opacity=".12" filter="url(#blur-${seed})"/>`);
+    },
+    '自然': () => {
+      // Mountain peaks
+      const mx = rand(80, w-80);
+      elements.push(`<path d="M${mx-80} ${h-20} L${mx-40} ${rand(40,90)} L${mx} ${h-20}" fill="${colors.ink}" opacity=".08" filter="url(#blur2-${seed})"/>`);
+      elements.push(`<path d="M${mx-30} ${h-20} L${mx+20} ${rand(60,110)} L${mx+70} ${h-20}" fill="${colors.acc}" opacity=".06" filter="url(#blur2-${seed})"/>`);
+      // Cloud
+      const clx = rand(30, w-80);
+      elements.push(`<ellipse cx="${clx}" cy="${rand(30,70)}" rx="${rand(30,50)}" ry="${rand(8,14)}" fill="white" opacity=".3" filter="url(#blur-${seed})"/>`);
+    },
+    '人物': () => {
+      // Brush strokes suggesting a person
+      const bx = rand(120, w-120), by = rand(80, h-80);
+      elements.push(`<path d="M${bx} ${by+30} Q${bx+10} ${by-20} ${bx+5} ${by-50}" stroke="${colors.ink}" stroke-width="2" fill="none" opacity=".3"/>`);
+      elements.push(`<circle cx="${bx+2}" cy="${by-55}" r="${rand(5,8)}" fill="${colors.ink}" opacity=".2"/>`);
+    },
+    '战争': () => {
+      // Crossed swords
+      const sx = rand(120, w-120), sy = rand(70, h-70);
+      elements.push(`<line x1="${sx-25}" y1="${sy-25}" x2="${sx+25}" y2="${sy+25}" stroke="${colors.acc}" stroke-width="2" opacity=".2"/>`);
+      elements.push(`<line x1="${sx+25}" y1="${sy-25}" x2="${sx-25}" y2="${sy+25}" stroke="${colors.acc}" stroke-width="2" opacity=".2"/>`);
+    },
+    '哲理': () => {
+      // Circle / yin yang hint
+      const rx = rand(100, w-100), ry = rand(80, h-80);
+      elements.push(`<circle cx="${rx}" cy="${ry}" r="${rand(20,35)}" fill="none" stroke="${colors.ink}" stroke-width="1.5" opacity=".2"/>`);
+      elements.push(`<circle cx="${rx+rand(-8,8)}" cy="${ry+rand(-8,8)}" r="${rand(3,6)}" fill="${colors.ink}" opacity=".15"/>`);
+    },
+    '情感': () => {
+      // Heart-like floating leaves
+      for (let i = 0; i < 3; i++) {
+        const lx = rand(50, w-50), ly = rand(40, h-40);
+        elements.push(`<path d="M${lx} ${ly}C${lx+rand(5,15)} ${ly-rand(5,15)} ${lx+rand(10,20)} ${ly} ${lx} ${ly+rand(5,10)}" fill="${colors.acc}" opacity=".1"/>`);
+      }
+    },
+    '行为': () => {
+      // Footsteps
+      for (let i = 0; i < 3; i++) {
+        const fx = rand(60, w-60) + i*rand(15,25);
+        const fy = rand(70, h-40);
+        elements.push(`<ellipse cx="${fx}" cy="${fy}" rx="${rand(6,10)}" ry="${rand(10,14)}" fill="none" stroke="${colors.ink}" stroke-width="1" opacity=".15" transform="rotate(${rand(-15,15)} ${fx} ${fy})"/>`);
+      }
+    },
+    '文化': () => {
+      // Scroll / brush
+      const vx = rand(100, w-100), vy = rand(60, h-60);
+      elements.push(`<rect x="${vx-30}" y="${vy-40}" width="${rand(50,80)}" height="${rand(60,90)}" rx="3" fill="none" stroke="${colors.acc}" stroke-width="1" opacity=".15"/>`);
+      elements.push(`<line x1="${vx}" y1="${vy-30}" x2="${vx}" y2="${vy+rand(30,50)}" stroke="${colors.ink}" stroke-width="1" opacity=".12"/>`);
+    },
+    '综合': () => {
+      // Abstract dots
+      for (let i = 0; i < 5; i++) {
+        const dx = rand(30, w-30), dy = rand(30, h-30);
+        elements.push(`<circle cx="${dx}" cy="${dy}" r="${rand(2,5)}" fill="${colors.ink}" opacity=".1"/>`);
+      }
+    }
+  };
+
+  // Call the category decorator
+  if (decoElements[category]) {
+    decoElements[category]();
+  } else {
+    decoElements['综合']();
+  }
+
+  // Calligraphy of first character (large, artistic)
+  const fontSize = word.length >= 4 ? 80 : 100;
+  elements.push(`<text x="${cx}" y="${cy+28}" text-anchor="middle"
+    font-family="Ma Shan Zheng,STKaiti,KaiTi,serif"
+    font-size="${fontSize}" fill="${colors.ink}" opacity=".12"
+    transform="rotate(${rand(-8,8)} ${cx} ${cy})"
+    filter="url(#blur-${seed})">${firstChar}</text>`);
+
+  // Stamp/seal in bottom right
+  const sealX = w-50, sealY = h-30;
+  elements.push(`<rect x="${sealX-22}" y="${sealY-22}" width="44" height="44" rx="4"
+    fill="none" stroke="#cc3333" stroke-width="1.5" opacity=".6"/>`);
+  elements.push(`<text x="${sealX}" y="${sealY+6}" text-anchor="middle"
+    font-family="Ma Shan Zheng,STKaiti,KaiTi,serif"
+    font-size="18" fill="#cc3333" opacity=".7">${category.slice(0,2)}</text>`);
+
+  // Bottom watermark line
+  elements.push(`<line x1="${cx-rand(40,80)}" y1="${h-12}" x2="${cx+rand(40,80)}" y2="${h-12}"
+    stroke="${colors.ink}" stroke-width="0.5" opacity=".15"/>`);
+
+  return `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">
+    ${elements.join('\n    ')}
+  </svg>`;
+}
+
+// ======= APP =======
+const PAGE_SIZE = 20;
+let currentPage = 1;
+let currentCat = 'all';
+let searchQuery = '';
+let favOnly = false;
+let data = [];
+
+// Favorites management
+function getFavs() {
+  try { return JSON.parse(localStorage.getItem('idiomFavs') || '[]'); }
+  catch { return []; }
+}
+function toggleFav(word) {
+  let favs = getFavs();
+  const idx = favs.indexOf(word);
+  if (idx >= 0) favs.splice(idx, 1);
+  else favs.push(word);
+  localStorage.setItem('idiomFavs', JSON.stringify(favs));
+  return favs.includes(word);
+}
+function isFav(word) { return getFavs().includes(word); }
+
+// Filter & search
+function getFiltered() {
+  let result = [...data];
+
+  // Category filter
+  if (currentCat !== 'all') {
+    result = result.filter(d => d.c === currentCat);
+  }
+
+  // Search
+  if (searchQuery.trim()) {
+    const q = searchQuery.trim().toLowerCase();
+    result = result.filter(d =>
+      d.w.includes(q) ||
+      d.p.toLowerCase().includes(q) ||
+      d.e.toLowerCase().includes(q) ||
+      d.d.toLowerCase().includes(q)
+    );
+  }
+
+  // Favorites only
+  if (favOnly) {
+    const favs = getFavs();
+    result = result.filter(d => favs.includes(d.w));
+  }
+
+  return result;
+}
+
+// Render grid
+function render() {
+  const filtered = getFiltered();
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE) || 1;
+
+  if (currentPage > totalPages) currentPage = totalPages;
+
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const page = filtered.slice(start, start + PAGE_SIZE);
+
+  const grid = document.getElementById('grid');
+  const favs = getFavs();
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#8a7a6a;"><p style="font-size:2rem;margin-bottom:8px;">🔍</p><p>没有找到匹配的成语</p><button class="btn btn-outline btn-sm" onclick="resetSearch()" style="margin-top:12px;">重置搜索</button></div>';
+  } else {
+    grid.innerHTML = page.map(d => `
+      <div class="card" onclick="openModal('${d.w}')">
+        <div class="card-illustration">${(()=>{
+          const imgPath = getImagePath(d.w);
+          // Test if file exists by trying to load image (simple approach: check if IMAGE_MAP has it)
+          if (hasRealImage(d.w)) {
+            return `<img src="${imgPath}" alt="${d.w}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.innerHTML='${generateIllustration(d.w, d.p, d.c).replace(/'/g, "\\'")}'">`;
+          }
+          return generateIllustration(d.w, d.p, d.c);
+        })()}</div>
+        <button class="card-fav ${favs.includes(d.w)?'active':''}" onclick="event.stopPropagation();toggleFavBtn(this,'${d.w}')">${favs.includes(d.w)?'♥':'♡'}</button>
+        <span class="card-category">${d.c}</span>
+        <div class="card-body">
+          <div class="card-word">${d.w}</div>
+          <div class="card-pinyin">${d.p}</div>
+          <div class="card-explanation">${d.e}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Stats
+  document.getElementById('resultCount').textContent = `共 ${filtered.length} 条成语`;
+  document.getElementById('viewingInfo').textContent = `第 ${currentPage} 页 / 共 ${totalPages} 页`;
+
+  // Pagination
+  renderPagination(totalPages);
+}
+
+function renderPagination(total) {
+  const el = document.getElementById('pagination');
+  let html = '';
+  html += `<button ${currentPage<=1?'disabled':''} onclick="goPage(${currentPage-1})">‹ 上一页</button>`;
+
+  // Smart page numbers
+  const pages = [];
+  for (let i = 1; i <= total; i++) {
+    if (i === 1 || i === total || (i >= currentPage-2 && i <= currentPage+2)) {
+      pages.push(i);
+    } else if (pages[pages.length-1] !== -1) {
+      pages.push(-1);
+    }
+  }
+  pages.forEach(p => {
+    if (p === -1) html += '<span style="color:#8a7a6a;padding:0 4px;">…</span>';
+    else html += `<button class="${p===currentPage?'active':''}" onclick="goPage(${p})">${p}</button>`;
+  });
+
+  html += `<button ${currentPage>=total?'disabled':''} onclick="goPage(${currentPage+1})">下一页 ›</button>`;
+  el.innerHTML = html;
+}
+
+// Navigation
+function goPage(p) {
+  currentPage = p;
+  render();
+  document.getElementById('grid').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function resetSearch() {
+  document.getElementById('searchInput').value = '';
+  searchQuery = '';
+  currentCat = 'all';
+  favOnly = false;
+  currentPage = 1;
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector('.cat-tab[data-cat="all"]')?.classList.add('active');
+  document.getElementById('catFilter').value = 'all';
+  document.getElementById('favBtn').classList.remove('btn-primary');
+  document.getElementById('favBtn').classList.add('btn-outline');
+  render();
+}
+
+// Modal
+let currentWord = '';
+let modalList = [];
+
+function openModal(word) {
+  const d = data.find(item => item.w === word);
+  if (!d) return;
+  
+  currentWord = word;
+  // Get the current filtered list for navigation
+  modalList = getFiltered();
+
+  // Regenerate illustration with fresh random seed
+  const imgPath = getImagePath(d.w);
+  if (hasRealImage(d.w)) {
+    document.getElementById('modalIllus').innerHTML = `<img src="${imgPath}" alt="${d.w}" style="width:100%;height:100%;object-fit:cover;" onerror="this.innerHTML='${generateIllustration(d.w, d.p, d.c).replace(/'/g, "\\'")}'">`;
+  } else {
+    document.getElementById('modalIllus').innerHTML = generateIllustration(d.w, d.p, d.c);
+  }
+
+  document.getElementById('modalWord').textContent = d.w;
+  document.getElementById('modalPinyin').textContent = d.p;
+
+  // Format story
+  let storyHtml = '';
+  // Children's story (大白话) first
+  if (typeof IDIOM_STORIES !== 'undefined' && IDIOM_STORIES[d.w]) {
+    storyHtml += `<div class="modal-label">📚 成语故事</div><div class="modal-story-text">${IDIOM_STORIES[d.w]}</div>`;
+  }
+  if (d.d) {
+    storyHtml += `<div class="modal-label">📖 出处</div><p>${d.d.replace(/\\n/g, '<br>')}</p>`;
+  }
+  storyHtml += `<div class="modal-label">📝 释义</div><p>${d.e.replace(/\\n/g, '<br>')}</p>`;
+  if (d.ex) {
+    storyHtml += `<div class="modal-label">💬 例句</div><div class="modal-example">${d.ex.replace(/\\n/g, '<br>')}</div>`;
+  }
+  document.getElementById('modalStory').innerHTML = storyHtml;
+
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  
+  updateNavButtons();
+}
+
+function updateNavButtons() {
+  const idx = modalList.findIndex(item => item.w === currentWord);
+  document.getElementById('prevBtn').disabled = (idx <= 0);
+  document.getElementById('nextBtn').disabled = (idx >= modalList.length - 1);
+  document.getElementById('navIndex').textContent = `${idx + 1} / ${modalList.length}`;
+}
+
+function navItem(direction) {
+  const idx = modalList.findIndex(item => item.w === currentWord);
+  const newIdx = idx + direction;
+  if (newIdx < 0 || newIdx >= modalList.length) return;
+  openModal(modalList[newIdx].w);
+}
+
+// Init
+function init() {
+  data = IDIOM_DATA;
+
+  // Populate category filter
+  const cats = [...new Set(data.map(d => d.c))].sort();
+  const filterEl = document.getElementById('catFilter');
+  cats.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c; opt.textContent = c;
+    filterEl.appendChild(opt);
+  });
+
+  // Category tabs
+  const tabBar = document.getElementById('catTabs');
+  let tabHtml = `<button class="cat-tab active" data-cat="all" onclick="filterCat('all')">🏮 全部</button>`;
+  cats.forEach(c => {
+    const emoji = {'动物':'🐾','自然':'🏔️','人物':'👤','战争':'⚔️','哲理':'☯️','情感':'💝','行为':'👣','文化':'📜','综合':'✨'};
+    tabHtml += `<button class="cat-tab" data-cat="${c}" onclick="filterCat('${c}')">${emoji[c]||'📖'} ${c}</button>`;
+  });
+  tabBar.innerHTML = tabHtml;
+
+  render();
+}
+
+// Event handlers
+function filterCat(cat) {
+  currentCat = cat;
+  currentPage = 1;
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.toggle('active', t.dataset.cat === cat));
+  document.getElementById('catFilter').value = cat;
+  render();
+}
+
+function toggleFavBtn(el, word) {
+  const now = toggleFav(word);
+  el.textContent = now ? '♥' : '♡';
+  el.classList.toggle('active', now);
+
+  // If in favorites-only mode, update display
+  if (favOnly) render();
+}
+
+// DOM events
+document.addEventListener('DOMContentLoaded', init);
+
+document.getElementById('searchInput').addEventListener('input', function() {
+  searchQuery = this.value;
+  currentPage = 1;
+  render();
+});
+
+document.getElementById('catFilter').addEventListener('change', function() {
+  filterCat(this.value);
+});
+
+document.getElementById('randomBtn').addEventListener('click', function() {
+  const d = data[Math.floor(Math.random() * data.length)];
+  openModal(d.w);
+});
+
+document.getElementById('favBtn').addEventListener('click', function() {
+  favOnly = !favOnly;
+  currentPage = 1;
+  this.classList.toggle('btn-primary', favOnly);
+  this.classList.toggle('btn-outline', !favOnly);
+  this.textContent = favOnly ? '⭐ 收藏中' : '⭐ 收藏';
+  render();
+});
+
+document.getElementById('modalClose').addEventListener('click', function() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+});
+
+document.getElementById('modal').addEventListener('click', function(e) {
+  if (e.target === this) {
+    this.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+// Keyboard shortcuts
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  // Modal navigation with arrow keys
+  if (document.getElementById('modal').classList.contains('open')) {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      navItem(-1);
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      navItem(1);
+    }
+  }
+});
+</script>
+</body>
+</html>

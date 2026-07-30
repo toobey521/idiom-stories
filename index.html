@@ -320,13 +320,13 @@ body{
   box-shadow:0 8px 30px rgba(79,124,130,.08);
 }
 .card-illustration{
-  width:100%;height:320px;overflow:hidden;
+  width:100%;height:0;padding-bottom:65%;overflow:hidden;
   background:linear-gradient(135deg,#f0f7f4,#e8f2ee);
   position:relative;flex-shrink:0;
 }
-.card-illustration img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.card-illustration img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;transition:transform .4s;}
 .card:hover .card-illustration img{transform:scale(1.03);}
-.card-illustration svg{width:100%;height:100%;display:block;}
+.card-illustration svg{position:absolute;top:0;left:0;width:100%;height:100%;}
 .card-body{
   padding:14px 18px 18px;
   flex:1;display:flex;flex-direction:column;
@@ -505,9 +505,15 @@ body{
   .stats{padding:0 16px;}
   .pagination{padding:0 16px;}
   .toolbar{padding:0 16px;}
-  .modal-body{padding:16px 20px 22px;}
-  .modal-illustration{height:160px;}
-  .modal-word{font-size:1.5rem;}
+  .modal-body{padding:14px 14px 18px;}
+  .modal-illustration{height:140px;}
+  .modal-word{font-size:1.4rem;letter-spacing:3px;}
+  .modal-story{font-size:.92rem;line-height:1.8;}
+  .modal-story-text{font-size:.88rem;padding:10px 14px;}
+  .modal-pinyin{font-size:.85rem;}
+  .btn-nav{padding:6px 12px;font-size:.78rem;}
+  .nav-index{font-size:.72rem;}
+  .modal-close{top:10px;right:10px;width:28px;height:28px;font-size:1rem;}
 }
 @media(max-width:480px){
   .header h1{font-size:1.6rem;letter-spacing:4px;}
@@ -515,7 +521,6 @@ body{
   .header p{font-size:.95rem;}
   .cat-bar{gap:4px;}
   .cat-tab{padding:5px 12px;font-size:.75rem;}
-  .card-illustration{height:180px;}
   .grid{gap:12px;}
 }
 

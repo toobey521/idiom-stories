@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>成语故事大全 · 扫码访问</title>
+<style>
+@font-face{font-family:'ZCOOL XiaoWei';src:url('fonts/ZCOOLXiaoWei.woff2') format('woff2');font-display:swap}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"Noto Serif SC","STKaiti","KaiTi","SimSun",serif;
+  background:linear-gradient(160deg,#f0f7f4 0%,#e2eee8 50%,#f6f9f8 100%);
+  min-height:100vh;color:#2c3e3d;
+  display:flex;flex-direction:column;align-items:center;
+  padding:48px 20px 60px;
+}
+h1{
+  font-family:"ZCOOL XiaoWei","Ma Shan Zheng",serif;
+  font-size:2.4rem;color:#2c5a52;
+  letter-spacing:10px;font-weight:400;
+  position:relative;
+}
+h1::after{
+  content:'';position:absolute;bottom:-10px;left:50%;
+  transform:translateX(-50%);
+  width:50px;height:2px;
+  background:linear-gradient(90deg,transparent,#4f7c82,transparent);
+}
+.subtitle{color:#5a7a74;font-size:.92rem;margin:22px 0 44px;letter-spacing:3px;}
+.card-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:28px;max-width:700px;width:100%;
+}
+.card{
+  background:#fff;border-radius:20px;
+  padding:36px 28px 30px;
+  text-align:center;
+  box-shadow:0 4px 28px rgba(79,124,130,.05);
+  border:1px solid rgba(79,124,130,.06);
+  transition:all .3s;position:relative;
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 36px rgba(79,124,130,.1);}
+.card-icon{font-size:1.8rem;margin-bottom:8px;}
+.card h2{
+  font-family:"ZCOOL XiaoWei","Ma Shan Zheng",serif;
+  font-size:1.1rem;color:#2c5a52;font-weight:400;
+  letter-spacing:3px;margin-bottom:2px;
+}
+.card .url{
+  font-size:.72rem;color:#7a9e96;
+  word-break:break-all;margin-bottom:18px;
+  letter-spacing:.5px;
+}
+.qr-wrap{
+  width:200px;height:200px;margin:0 auto 14px;
+  border-radius:12px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.qr-wrap img{width:200px;height:200px;display:block;}
+.badge{
+  display:inline-block;padding:3px 14px;border-radius:10px;
+  font-size:.75rem;letter-spacing:1px;
+}
+.badge-on{background:#e0f0e8;color:#2a6b52;}
+.badge-off{background:#f5f0f0;color:#9a8a8a;}
+.card .hint{font-size:.75rem;color:#a8c0b8;margin-top:8px;}
+.card-sub{grid-column:1/-1;max-width:320px;justify-self:center;width:100%;padding:28px;}
+
+@media(max-width:640px){
+  .card-grid{grid-template-columns:1fr;gap:20px;}
+  h1{font-size:1.6rem;letter-spacing:6px;}
+  body{padding:28px 16px 40px;}
+  .subtitle{margin:16px 0 28px;}
+}
+</style>
+</head>
+<body>
+
+<h1>成语故事大全</h1>
+<p class="subtitle">扫一扫 · 即刻浏览 1000 条经典成语</p>
+
+<div class="card-grid">
+
+  <div class="card">
+    <div class="card-icon">🐙</div>
+    <h2>主站 · GitHub Pages</h2>
+    <div class="url">toobey521.github.io/idiom-stories</div>
+    <div class="qr-wrap"><img src="qr/github-pages.png" alt="GitHub Pages QR"></div>
+    <span class="badge badge-on">✓ 已上线</span>
+    <div class="hint">全球访问 · 自动 HTTPS</div>
+  </div>
+
+  <div class="card">
+    <div class="card-icon">📦</div>
+    <h2>国内加速 · jsDelivr CDN</h2>
+    <div class="url">cdn.jsdelivr.net/gh/toobey521/idiom-stories</div>
+    <div class="qr-wrap"><img src="qr/jsdelivr.png" alt="jsDelivr CDN QR"></div>
+    <span class="badge badge-on">✓ 可用</span>
+    <div class="hint">国内速度快 · 免翻墙</div>
+  </div>
+
+  <div class="card card-sub">
+    <div class="card-icon">☁️</div>
+    <h2>Cloudflare Pages</h2>
+    <div class="url">待配置 — 需提供 Cloudflare 账号</div>
+    <div style="width:120px;height:120px;margin:10px auto;border-radius:50%;background:#f5f7f6;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#b8d0c8;">+</div>
+    <span class="badge badge-off">未配置</span>
+    <div class="hint">国内访问更优 · 连接 GitHub 即可自动部署</div>
+  </div>
+
+</div>
+
+</body>
+</html>
